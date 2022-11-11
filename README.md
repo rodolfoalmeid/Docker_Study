@@ -55,3 +55,25 @@ K8s Getting Started
   
 ## K8s Architectural Overview
 
+* K8s Control Plane
+
+  It is what runs our kubernetes cluster.
+  A collection of multiple components that are responsible to manage the cluster globally.
+  Control plane components can run on any machine in the cluster, but usually are run on dedicated controller machines.
+  
+  * **kube-api-server** serves the Kubernetes API, the primary interface to the control plane and the cluster itself.
+    When interacting with your Kubernetes cluster, you will usually do so using the Kubernetes API.
+    
+  * **Etcd** is the backend data store for the kubernetes cluster, and provides high availability sotrage for all data relating to the state of the cluster.
+   
+  * **Kube-scheduler** handles scheduling, the process of selecting an available node in the cluster on which to run containers.
+  
+  * **kube-controller-mnager** runs a collection of multiple controller utilities in a single process. These controllers carry out a variety of automation-related tasks within the Kubernetes cluster.
+   
+  * **cloud-controller-manager** provides an interface between Kubernetes and various cloud platorms. It is only used when using cloud-based resources alongside Kubernetes.
+  
+* K8s Nodes
+  
+  Nodes are the machines where the conteiners managed by the cluster run. A cluster can have any number of nodes. Various node components manage conteiners on the machine and communicate with the control plane.
+  
+* A K8s Cluster
