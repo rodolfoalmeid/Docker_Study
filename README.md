@@ -12,7 +12,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 # Table of Contents
 
 1. [CKA Certification Exam](#CKA-Certification-Exam)
-2. [K8S Basics Quick Recap](#k8s-Basics)
+2. [K8S Basics Quick Recap](#k8s-Basics-Quick-Recap)
 
 ---------------
 
@@ -29,7 +29,7 @@ It is permited to use Documentation link but no personal bookmarks.
 It is permited only one active monitor during the exam.
 
 
-k8s Basics - Quick Recap
+k8s Basics Quick Recap
 ====================
 
 
