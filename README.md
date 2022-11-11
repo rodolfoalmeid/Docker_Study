@@ -42,7 +42,7 @@ K8s Getting Started
 
   K8s is simply short for Kubernetes. The 8 represents the 8 letters between K ad S!
  
-* What actualy does?
+* What K8s actualy does?
 
   Kubernetes creates a cluster to manage all nodes (servers) and conteiners is a centralized way. When you run a conteiner inside a Kubernetes cluster you do not need to worry in which server the conteiner will run, because kubernetes will manage that.
  
