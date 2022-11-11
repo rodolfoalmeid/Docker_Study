@@ -11,18 +11,28 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 
 # Table of Contents
 
-1. [K8S Basics](#k8s-Basics)
+1. [CKA Certification Exam](#CKA-Certification-Exam)
+2. [K8S Basics Quick Recap](#k8s-Basics)
 
 ---------------
 
-k8s-Basics
+CKA Certification Exam
 ====================
 
-* [static-binaries]
+## CKA Exam
+The CKA exam is periodically updated. The current CKA version is 1.24 and the most significant change is that the exam now uses K8s version 1.24.
+The exam version maches the kubernetes version.
 
-	If you need to use a program that is not on the box you just broke into, try and build a static binary! I've seen this used on Fatty for HackTheBox, getting a `pty` with the typical `python -c 'import pty...'` trick when it didn't have Python originally!
+## PSI Bridge Proctoring Platform
+The exam platform is PSI Bridge Proctorin Platform and it uses the PSI Secure Browser that is required to do the exam.
+It is permited to use Documentation link but no personal bookmarks.
+It is permited only one active monitor during the exam.
 
-	https://github.com/andrew-d/static-binaries
+
+k8s Basics - Quick Recap
+====================
+
+
   
 k8s-lab
 ====================
