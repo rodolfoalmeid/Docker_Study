@@ -5,7 +5,7 @@ Kubernetes CKA Study
 
 ------------------------------------------
 
-This is a repository will be used to post all topics related to Kubernetes CKA certification. My study will be based on the CLoud Guru training called "Certified Kubernetes Administrator (CKA)".
+This repository will be used to post all topics related to Kubernetes CKA certification. My study will be based on the CLoud Guru training called "Certified Kubernetes Administrator (CKA)".
 
 ------------------------------------------
 
