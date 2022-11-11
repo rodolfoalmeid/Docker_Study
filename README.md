@@ -11,7 +11,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 
 # Table of Contents
 
-1. [k8s Basics](#k8s-Basics)
+1. [K8S Basics](#k8s-Basics)
 
 ---------------
 
