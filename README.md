@@ -40,7 +40,7 @@ K8s Getting Started
 
 * What does "k8s" mean?
 
-  K8s is simply short for Kubernetes. The 8 represents the 8 letters between K ad S!
+  K8s is simply a short for Kubernetes. The 8 represents the 8 letters between K ad S!
  
 * What K8s actualy does?
 
