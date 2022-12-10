@@ -51,7 +51,7 @@ K8s Getting Started
   Container Orchestration - The primary purpose of Kubernetes is to dynamicaly manage conteiners across multipe host systems.
   Application Reliability - Kubernetes makes it easier to build reliable, self-healing, and scalable applications.
  
- Automation - Kubernetes offers a variety of features to help automate the management of your container apps.
+  Automation - Kubernetes offers a variety of features to help automate the management of your container apps.
 
   
 ## K8s Architectural Overview
