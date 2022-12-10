@@ -24,7 +24,7 @@ The CKA exam is periodically updated. The current CKA version is 1.24 and the mo
 The exam version maches the kubernetes version.
 
 ## PSI Bridge Proctoring Platform
-The exam platform is PSI Bridge Proctorin Platform and it uses the PSI Secure Browser that is required to do the exam.
+The exam platform is PSI Bridge Proctoring Platform and it uses the PSI Secure Browser that is required to do the exam.
 It is permited to use Documentation link but no personal bookmarks.
 It is permited only one active monitor during the exam.
 
