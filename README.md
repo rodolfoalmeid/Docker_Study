@@ -96,5 +96,33 @@ K8s Getting Started
 ![image](https://user-images.githubusercontent.com/113181949/201423697-3e8189af-fbf5-438d-93c8-f1fa11e643bd.png)
 
      
-  
+## Building a Kubernetes Cluster
 
+### What is kubeadm?
+
+It is a tool that will simplify the process of setting up our Kubernetes cluster. This tool provide `kubeadm init` and `kubeadm join` as best-practice "fast paths" for creating Kubernetes clusters. kubeadm performs the actions necessary to get a minimum viable cluster up and running. By design, it cares only about bootstrapping, not about provisioning machines. Likewise, installing various nice-to-have addons, like the Kubernetes Dashboard, monitoring solutions, and cloud-specific addons, is not in scope.
+
+
+### Playground Server Setup
+
+![image](https://user-images.githubusercontent.com/113181949/207026751-965e7f24-2f39-4123-8d01-07bd0aeca4d6.png)
+
+## LAB
+
+1. Deploy three nodes in your cloud provider.
+
+2. Change the server host name to controller and worker nodes.
+
+   `sudo hostnamectl set-hostname k8s-controller1`
+
+3. Setup the host file with all servers hostname for name resolution.
+   
+   `sudo vi /etc/hosts`
+   
+   Exemple to add the IP Address and hostname server. 
+   
+   *Allways uses private IP Address because they are static. Public IP Address is dynamic and might change*
+   
+   ![image](https://user-images.githubusercontent.com/113181949/207029232-8bab9ee2-827b-4087-b79a-dd39c3a9045b.png)
+   
+    Tip: In order to hostname changes take effect, logout and login back to the server.
