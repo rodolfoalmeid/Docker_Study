@@ -127,3 +127,85 @@ It is a tool that will simplify the process of setting up our Kubernetes cluster
    
    > __Note__ 
    > In order to hostname changes take effect, logout and login back to the server.
+
+4. Install and configure conteinerd
+   
+   - Enable `overlay` and `br_netfilter`. Load kernel modules on startup and everytime the server boots `overlay` and `br_netfilter` will be enabled.
+   
+   ```
+   cat << EOF | sudo tee /etc/modules-load.d/conteinerd.conf 
+   overlay
+   br-netfilter
+   EOF
+   ```
+   
+   - This commands will immediatly enable those modelus and it is not required to reboot the host to enable them.
+   
+   ```
+   sudo modeprobe overlay
+   sudo modeprobe br_netfilter
+   ```
+   
+   - Network configurations required that kubernetes is gonna need.
+   
+   ```
+   cat <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf
+   net.bridge.bridge-nf-call-iptables = 1
+   net.ipv4.ip_forward = 1
+   net.bridge.bridge-nf-call-ip6tables = 1
+   EOF
+   ```
+   
+   - To apply all this configurations 
+
+   ```
+   sudo sysctl --system
+   ```
+   
+5. Install and configure containerd.
+
+   ```
+   sudo apt-get update && sudo apt-get install -y containerd
+   sudo mkdir -p /etc/containerd
+   sudo containerd config default | sudo tee /etc/containerd/config.toml
+   sudo systemctl restart containerd
+   ```
+
+
+
+6. On all nodes, disable swap.
+   ```
+   sudo swapoff -a
+   ```
+
+7. On all nodes, install kubeadm, kubelet, and kubectl.
+
+  ```
+  sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+  cat << EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+  deb https://apt.kubernetes.io/ kubernetes-xenial main
+  EOF
+  
+  sudo apt-get update
+  
+  sudo apt-get install -y kubelet=1.24.0-00 kubeadm=1.24.0-00 kubectl=1.24.0-00
+  
+  sudo apt-mark hold kubelet kubeadm kubectl
+  ```
+
+8. On the control plane node only, initialize the cluster and set up kubectl access.
+  
+  ```
+  sudo kubeadm init --pod-network-cidr 192.168.0.0/16 --kubernetes-version 1.24.0
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  ```
+  
+9. Verify the cluster is working.
+
+   ```
+   kubectl get nodes
+   ```
+   
