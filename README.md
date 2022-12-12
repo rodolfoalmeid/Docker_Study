@@ -143,8 +143,8 @@ It is a tool that will simplify the process of setting up our Kubernetes cluster
    - This commands will immediatly enable those modules and it is not required to reboot the host to enable them.
    
    ```
-   sudo modeprobe overlay
-   sudo modeprobe br_netfilter
+   sudo modprobe overlay
+   sudo modprobe br_netfilter
    ```
    
    - Network configurations required that kubernetes is gonna need.
