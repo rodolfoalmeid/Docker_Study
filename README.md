@@ -139,7 +139,7 @@ It is a tool that will simplify the process of setting up our Kubernetes cluster
    EOF
    ```
    
-   - This commands will immediatly enable those modelus and it is not required to reboot the host to enable them.
+   - This commands will immediatly enable those modules and it is not required to reboot the host to enable them.
    
    ```
    sudo modeprobe overlay
@@ -174,6 +174,12 @@ It is a tool that will simplify the process of setting up our Kubernetes cluster
 
 
 6. On all nodes, disable swap.
+  
+   What is Swap on linux? 
+   
+   Swap space in Linux is a part of a machine's virtual memory used when the physical memory runs out of space. Especially when working with a large program or application where a need for extra memory arises, swap space is an ideal choice to hold temporarily inactive memory pages.
+   Sometimes you need to disable Swap on a Linux server. Kubernetes worker nodes need to have Swap turned off in order to increase the performance and stability.
+   
    ```
    sudo swapoff -a
    ```
@@ -182,7 +188,9 @@ It is a tool that will simplify the process of setting up our Kubernetes cluster
 
    ```
    sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+   
    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+   
    cat << EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
    deb https://apt.kubernetes.io/ kubernetes-xenial main
    EOF
@@ -198,8 +206,11 @@ It is a tool that will simplify the process of setting up our Kubernetes cluster
   
    ```
    sudo kubeadm init --pod-network-cidr 192.168.0.0/16 --kubernetes-version 1.24.0
+   
    mkdir -p $HOME/.kube
+   
    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  
    sudo chown $(id -u):$(id -g) $HOME/.kube/config
    ```
   
