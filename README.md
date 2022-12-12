@@ -66,6 +66,8 @@ K8s Getting Started
   * **kube-api-server** serves the Kubernetes API, the primary interface to the control plane and the cluster itself.
     When interacting with your Kubernetes cluster, you will usually do so using the Kubernetes API.
     
+    [blabla](main/whatisAPI.md)
+    
     [If you do not know what is API please check this link.](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/blob/main/whatisAPI.md)
    
     
