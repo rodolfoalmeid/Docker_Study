@@ -15,6 +15,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 
 1. [CKA Certification Exam](#CKA-Certification-Exam)
 2. [K8S Getting Started](#k8s-Getting-Started)
+3. [LAB #01](#LAB#01)
 
 ---------------
 
@@ -107,7 +108,7 @@ It is a tool that will simplify the process of setting up our Kubernetes cluster
 
 ![image](https://user-images.githubusercontent.com/113181949/207026751-965e7f24-2f39-4123-8d01-07bd0aeca4d6.png)
 
-## LAB
+## LAB#01
 
 1. Deploy three nodes in your cloud provider.
 
