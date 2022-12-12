@@ -180,32 +180,56 @@ It is a tool that will simplify the process of setting up our Kubernetes cluster
 
 7. On all nodes, install kubeadm, kubelet, and kubectl.
 
-  ```
-  sudo apt-get update && sudo apt-get install -y apt-transport-https curl
-  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-  cat << EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
-  deb https://apt.kubernetes.io/ kubernetes-xenial main
-  EOF
+   ```
+   sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+   curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+   cat << EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+   deb https://apt.kubernetes.io/ kubernetes-xenial main
+   EOF
   
-  sudo apt-get update
+   sudo apt-get update
   
-  sudo apt-get install -y kubelet=1.24.0-00 kubeadm=1.24.0-00 kubectl=1.24.0-00
+   sudo apt-get install -y kubelet=1.24.0-00 kubeadm=1.24.0-00 kubectl=1.24.0-00
   
-  sudo apt-mark hold kubelet kubeadm kubectl
-  ```
+   sudo apt-mark hold kubelet kubeadm kubectl
+   ```
 
 8. On the control plane node only, initialize the cluster and set up kubectl access.
   
-  ```
-  sudo kubeadm init --pod-network-cidr 192.168.0.0/16 --kubernetes-version 1.24.0
-  mkdir -p $HOME/.kube
-  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-  sudo chown $(id -u):$(id -g) $HOME/.kube/config
-  ```
+   ```
+   sudo kubeadm init --pod-network-cidr 192.168.0.0/16 --kubernetes-version 1.24.0
+   mkdir -p $HOME/.kube
+   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   sudo chown $(id -u):$(id -g) $HOME/.kube/config
+   ```
   
 9. Verify the cluster is working.
 
-   ```
-   kubectl get nodes
-   ```
+    ```
+    kubectl get nodes
+    ```
    
+10. Install the Calico network add-on.
+
+    ```
+    kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+    ```
+   
+11. Get the join command (this command is also printed during kubeadm init . Feel free to simply copy it from there).
+    
+    ```
+    kubeadm token create --print-join-command
+    ```
+   
+12. Copy the join command from the control plane node. Run it on each worker node as root (i.e. with sudo ).
+
+    ```
+    sudo kubeadm join ...
+    ```
+   
+13. On the control plane node, verify all nodes in your cluster are ready. Note that it may take a few moments for all of the nodes to
+
+    ```
+    enter the READY state.
+    kubectl get nodes
+    ```
