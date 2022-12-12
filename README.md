@@ -125,4 +125,5 @@ It is a tool that will simplify the process of setting up our Kubernetes cluster
    
    ![image](https://user-images.githubusercontent.com/113181949/207029232-8bab9ee2-827b-4087-b79a-dd39c3a9045b.png)
    
-    Tip: In order to hostname changes take effect, logout and login back to the server.
+   > __Note__ 
+   > In order to hostname changes take effect, logout and login back to the server.
