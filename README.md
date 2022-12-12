@@ -66,9 +66,7 @@ K8s Getting Started
   * **kube-api-server** serves the Kubernetes API, the primary interface to the control plane and the cluster itself.
     When interacting with your Kubernetes cluster, you will usually do so using the Kubernetes API.
     
-    [blabla](/whatisAPI.md)
-    
-    [If you do not know what is API please check this link.](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/blob/main/whatisAPI.md)
+    [If you do not know what is API please check this link.](/whatisAPI.md)
    
     
   * **Etcd** is the backend data store for the kubernetes cluster, and provides high availability sotrage for all data relating to the state of the cluster.
