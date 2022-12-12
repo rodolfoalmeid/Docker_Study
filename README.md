@@ -11,7 +11,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 
 # Table of Contents
 
-1. [CKA Certification Exam](#CKA-Certification-Exam)
+ 1. [CKA Certification Exam](#CKA-Certification-Exam)
 2. [K8S Getting Started](#k8s-Getting-Started)
 
 ---------------
@@ -65,6 +65,9 @@ K8s Getting Started
   
   * **kube-api-server** serves the Kubernetes API, the primary interface to the control plane and the cluster itself.
     When interacting with your Kubernetes cluster, you will usually do so using the Kubernetes API.
+    
+    [If you do not know what is API please check this link.](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/blob/main/whatisAPI.md)
+   
     
   * **Etcd** is the backend data store for the kubernetes cluster, and provides high availability sotrage for all data relating to the state of the cluster.
    
