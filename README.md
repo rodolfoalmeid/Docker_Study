@@ -275,4 +275,10 @@ kubectl get pods --namespaces my-namespace
    > __Note__ 
    > If you do not specify a namespace, the default namespace is assumed.
 
+## Create a Namespace
 
+You can create a namespace with kubectl.
+
+```
+kubectl create namespace my-namespace
+```
