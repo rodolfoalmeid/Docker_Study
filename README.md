@@ -15,8 +15,9 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 
 1. [CKA Certification Exam](#CKA-Certification-Exam)
 2. [K8S Getting Started](#k8s-Getting-Started)
-3. [LAB #01](#LAB-01)
-4. [Namespaces in K8s](#namespaces-in-k8s)
+3. [Building a Kubernetes Cluster](#building-a-kubernetes-cluster)
+4. [LAB #01](#LAB-01)
+5. [Namespaces in K8s](#namespaces-in-k8s)
 
 ---------------
 
@@ -98,7 +99,8 @@ K8s Getting Started
 ![image](https://user-images.githubusercontent.com/113181949/201423697-3e8189af-fbf5-438d-93c8-f1fa11e643bd.png)
 
      
-## Building a Kubernetes Cluster
+Building a Kubernetes Cluster
+====================
 
 ### What is kubeadm?
 
@@ -257,4 +259,20 @@ You can list existing namespaces with kubectl:
 ```
 kubectl get namespaces
 ```
+
+All clusters have a default namespace. This is used when no namespace is specified. kubeadm also creates a kube-system namespace for system components.
+
+## Specify a Namespace
+
+When using kubectl, you may need to specify a namspace. You can do this with the `--namespace` flag.
+
+Alternatively you can use the -n flag, which is the short form of the --namespace flag.
+
+```
+kubectl get pods --namespaces my-namespace
+```
+
+   > __Note__ 
+   > If you do not specify a namespace, the default namespace is assumed.
+
 
