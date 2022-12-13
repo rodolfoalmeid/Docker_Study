@@ -16,6 +16,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 1. [CKA Certification Exam](#CKA-Certification-Exam)
 2. [K8S Getting Started](#k8s-Getting-Started)
 3. [LAB #01](#LAB-01)
+4. [Namespaces in K8s](#namespaces-in-k8s)
 
 ---------------
 
@@ -108,7 +109,8 @@ It is a tool that will simplify the process of setting up our Kubernetes cluster
 
 ![image](https://user-images.githubusercontent.com/113181949/207026751-965e7f24-2f39-4123-8d01-07bd0aeca4d6.png)
 
-## LAB-01
+LAB-01
+====================
 
 1. Deploy three nodes in your cloud provider.
 
@@ -243,3 +245,16 @@ It is a tool that will simplify the process of setting up our Kubernetes cluster
     enter the READY state.
     kubectl get nodes
     ```
+Namespaces in K8S
+====================
+
+Namespaces are virtual clusters backed by the same physical cluster. Kubernetes objects, such as pods and containers, live in namespaces. Namespaces are a way to separate and organize objects in your cluster.
+
+## List existing Namespaces
+
+You can list existing namespaces with kubectl:
+
+```
+kubectl get namespaces
+```
+
