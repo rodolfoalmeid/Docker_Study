@@ -272,8 +272,15 @@ Alternatively you can use the -n flag, which is the short form of the --namespac
 kubectl get pods --namespaces my-namespace
 ```
 
-   > __Note__ 
-   > If you do not specify a namespace, the default namespace is assumed.
+You can also get pods from all namespaces using the command below.
+
+```
+kubectl get pods --all-namespaces
+```
+
+> __Note__ 
+> If you do not specify a namespace, the default namespace is assumed.
+
 
 ## Create a Namespace
 
