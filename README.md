@@ -16,7 +16,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 1. [CKA Certification Exam](#CKA-Certification-Exam)
 2. [K8S Getting Started](#k8s-Getting-Started)
 3. [Building a Kubernetes Cluster](#building-a-kubernetes-cluster)
-4. [LAB01](#LAB01-building-a-kubernetes-cluster)
+4. [LAB01 Building a Kubernetes Cluster](#lab01-building-a-kubernetes-cluster)
 5. [Namespaces in K8s](#namespaces-in-k8s)
 6. [LAB02 Working with Kubernetes Namespaces](#LAB02-working-with-kubernetes-namespaces)
 
