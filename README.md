@@ -406,5 +406,24 @@ There is a variety of management tools available for kubernetes. THese tools int
   It is a configuration management tool for managing Kubernetes object configurations. It allows you to share and re-use templated configurations for Kubernetes applications. It is similar to Helm.
   
   
+## Safely Draining a K8s Node
 
+#### What is Draining?
+
+When performing maintenance, you may sometimes need to remove a Kubernetes node from service. To do this, you can drain the node. Containers running on the node will be gracefully terminated (and potentially rescheduled on another node).
+
+#### Draining a Node
+
+To drain a node, use the kubectl drain command.
+```
+kubectl drain <node name>
+```
+
+- Ignoring DaemonSets
+  When draining a node, you may need to ignore DaemonSets (pods that are tied to each node). If you have any DaemonSet pods running on the node, you will likely need to use the ```--ignore-daemonsets``` flag.
+  
+ ```
+ kubectl drain <node name> --ignore-daemonsets
+ ```
+ 
 
