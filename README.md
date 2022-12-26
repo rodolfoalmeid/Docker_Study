@@ -375,6 +375,30 @@ like in a Kubernetes cluster.
  > Link to access [Options for High Availability Topolology](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/)
 
 
+## Introduction to K8s Management Tools
 
+What are k8s Managemente tools?
+
+There is a variety of management tools available for kubernetes. THese tools interface with kubernetes to provide additional functionality. When using Kubernetes, it is a good idea to be aware of some of these tools.
+
+- kubectl
+  kubectl is the official command line interface for Kubernetes.
+
+- kubeadm
+  It is a tool for quickly and easily creating Kubernetes clusters.
+  
+- Minikube
+  Allows you to automatically set up a local single-node Kubernetes cluster. It igreat for getting k8s up adn running quickly for test and development purposes.
+  
+- Helm
+  Provides templating and package management for Kubernetes objects. Can be used to manage your own templates (known charts). You can also download and use shared templates.
+  
+- Kompose
+  It helps you translate Docker compose files into Kubernetes objects. If you are using Docker compose for some part of your workflow, you can move your application to Kubernetes easily with Kompose.
+  
+- Kustomize
+  It is a configuration management tool for managing Kubernetes object configurations. It allows you to share and re-use templated configurations for Kubernetes applications. It is similar to Helm.
+  
+  
 
 
