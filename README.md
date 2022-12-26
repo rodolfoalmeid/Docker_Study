@@ -435,3 +435,6 @@ kubectl drain <node name>
 kubectl uncordon <node name>
 ```
 
+> __Note__ > 
+> Be aware that pods running on the Drained node will be started on the available nodes on the cluster, but once the node is uncordoned, it will not be started back in the uncordoned node. The pods will remain running on the nodes and just new pods will be started on the uncordoned node.
+>  If a pod is deployed manually in a node, it cannot be started in a different node. The node will be deleted if using ```--force``` flag.
