@@ -19,6 +19,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 4. [LAB01 Building a Kubernetes Cluster](#lab01-building-a-kubernetes-cluster)
 5. [Namespaces in K8s](#namespaces-in-k8s)
 6. [LAB02 Working with Kubernetes Namespaces](#LAB02-working-with-kubernetes-namespaces)
+7. [Kubernetes Management](#kubernetes-management)
 
 ---------------
 
@@ -344,3 +345,35 @@ vi /home/cloud_user/quark-namespace.txt
 Paste in the name of the `quark` pod's namespace.
 
 Save and exit the file by pressing Escape followed by `:wq.`
+
+Kubernetes Management
+====================
+
+## Intruduction to High Availability in K8s
+
+K8s favilitates high-availability applications, but you can also design the cluster itself to be high available. To do this, you need multiple control plane nodes.
+
+![image](https://user-images.githubusercontent.com/113181949/209571762-108255c6-ff11-40a0-a14a-ad0d9e48612d.png)
+
+## Stacked etcd
+The etcd runs on the same nodes as the rest of control plane components.
+This is the setup pattern used by clusters that are set up using kubeadm. So we used kubeadm to build our cluster and kubeadm uses this stacked etcd methodology. That means that our control plane node, which is running all of the different control plane components, is also running etcd, and in a high availability setup, each one of those individual control plane nodes would have its own etcd instance.
+
+![image](https://user-images.githubusercontent.com/113181949/209573214-7246b411-2c80-4353-be8b-7e8e6209085f.png)
+
+## External etcd
+
+With external etcd, we have etcd running on completely separate nodes. In the context of high availability, we could then have multiple external etcd nodes in a high availability cluster, and that set of servers would be a completely different set of servers from the
+ones that are running our normal Kubernetes control plane components. With the external etcd model, you can have any number of Kubernetes control plane instances and any number of SED nodes. So in this lesson, we've provided a brief high-level overview of what high availability looks
+like in a Kubernetes cluster.
+
+
+![image](https://user-images.githubusercontent.com/113181949/209573266-fc3a280c-fa21-4fee-ac19-f460ff6ea63e.png)
+
+
+
+
+
+
+
+
