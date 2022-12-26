@@ -513,7 +513,7 @@ kubectl get nodes
 
 Upgrade the worker nodes.
 
-> Note__ : In a real-world scenario, you should not perform upgrades on all worker nodes at the same time. Make sure
+> __Note__ : In a real-world scenario, you should not perform upgrades on all worker nodes at the same time. Make sure
 enough nodes are available at any given time to provide uninterrupted service.
 
 Run the following on the control plane node to drain worker node 1:
