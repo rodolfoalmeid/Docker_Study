@@ -440,3 +440,25 @@ kubectl uncordon <node name>
 
 > __Note 2__ > 
 > Pods will be started in other nodes if they were deployed as deployments. If a pod is deployed manually in a node, it cannot be started in a different node. The node will be deleted if using ```--force``` flag.
+
+
+## Upgrading K8s with kubeadm
+
+#### Upgrading with kubeadm
+When using kubernetes, you will likely want to periodically upgrade Kubernetes to keep your cluster up to date and kubeadm makes this process easier.
+
+#### Control Plane Upgrade Steps
+- Upgrade kubeadm on the control plane node.
+- Drain the control plane node.
+- Plan the upgrade (kubeadm upgrade plan).
+- Apply the upgrade (kubeadm upgrade apply).
+- Upgrade kubelet and kubectl on the control plane node.
+- Uncordon the control plane node.
+
+#### Worker Node Upgrade Steps
+- Drain the node.
+- Upgrade kubeadm.
+- Upgrade the kubelet configuration (kubeadm upgrade node).
+- Upgrade kubelet and kubectl.
+- Uncordon the node.
+
