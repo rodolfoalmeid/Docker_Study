@@ -353,7 +353,7 @@ Kubernetes Management
 
 K8s favilitates high-availability applications, but you can also design the cluster itself to be high available. To do this, you need multiple control plane nodes.
 
-![image](https://user-images.githubusercontent.com/113181949/209571762-108255c6-ff11-40a0-a14a-ad0d9e48612d.png)
+![image](https://user-images.githubusercontent.com/113181949/209573691-b12e1c73-0391-400e-a931-e90eb36c2ce7.png)
 
 ## Stacked etcd
 The etcd runs on the same nodes as the rest of control plane components.
@@ -371,7 +371,8 @@ like in a Kubernetes cluster.
 ![image](https://user-images.githubusercontent.com/113181949/209573266-fc3a280c-fa21-4fee-ac19-f460ff6ea63e.png)
 
 
-
+ > __Note__ 
+ > Link to access Options for High Availability Topolology
 
 
 
