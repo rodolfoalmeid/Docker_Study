@@ -419,11 +419,19 @@ To drain a node, use the kubectl drain command.
 kubectl drain <node name>
 ```
 
-- Ignoring DaemonSets
+#### Ignoring DaemonSets
+
   When draining a node, you may need to ignore DaemonSets (pods that are tied to each node). If you have any DaemonSet pods running on the node, you will likely need to use the ```--ignore-daemonsets``` flag.
   
  ```
  kubectl drain <node name> --ignore-daemonsets
  ```
  
+#### Uncordoning a Node
+
+ If the node reamins part of the cluster, yo can allow pods to run on the node again when maintenance is complete using the ```kubectl uncordon``` command.
+
+```
+kubectl uncordon <node name>
+```
 
