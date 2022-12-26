@@ -372,7 +372,7 @@ like in a Kubernetes cluster.
 
 
  > __Note__ 
- > Link to access Options for High Availability Topolology
+ > Link to access [Options for High Availability Topolology](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/)
 
 
 
