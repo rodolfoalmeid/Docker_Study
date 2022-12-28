@@ -173,8 +173,11 @@ LAB01 Building a Kubernetes cluster
 
    ```
    sudo apt-get update && sudo apt-get install -y containerd
+   
    sudo mkdir -p /etc/containerd
+   
    sudo containerd config default | sudo tee /etc/containerd/config.toml
+   
    sudo systemctl restart containerd
    ```
 
@@ -193,8 +196,6 @@ LAB01 Building a Kubernetes cluster
 
    ```
    sudo apt-get update && sudo apt-get install -y apt-transport-https curl
-   
-   sudo mkdir -p /etc/containerd
    
    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
    
