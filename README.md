@@ -194,6 +194,8 @@ LAB01 Building a Kubernetes cluster
    ```
    sudo apt-get update && sudo apt-get install -y apt-transport-https curl
    
+   sudo mkdir -p /etc/containerd
+   
    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
    
    cat << EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
