@@ -21,6 +21,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 6. [LAB02 Working with Kubernetes Namespaces](#LAB02-working-with-kubernetes-namespaces)
 7. [Kubernetes Management](#kubernetes-management)
 8. [LAB03 Performing Kubernetes Upgrade](#LAB03-performing-kubernetes-upgrade)
+9. [Backing Up and Restoring Etcd Cluster Data](#backing-up-and-restoring-etcd-cluster-data)
 
 ---------------
 
@@ -568,5 +569,33 @@ Kubernetes Cluster
 
 In this cluster we have three servers; One controle plane and two worker nodes. The cluster was built with Kubeadm.
 First we need to upgrade the control plane and then the worker nodes.
+
+
+Backing Up and Restoring Etcd Cluster Data
+====
+
+### Why Back UP etcd?
+
+**etcd** is the backend data data storage solution for your kubernetes cluster. As such, all your kubernetes objects, applications, and configurations are stored in etcd.
+
+Therefore, you will likely data by backing up etcd.
+
+
+### Backing UP etcd
+
+You can back up etcd command line tool, **etcdctl**.
+
+Use the **etcdctl snapshot save** command to back up the data. 
+
+![image](https://user-images.githubusercontent.com/113181949/217636700-dc24e7bc-17e0-4dba-bb5f-f826dca6e458.png)
+
+
+### Restoring etcd
+
+You can restore etcd data from a backup using the **etcdctl snapshot restore** command.
+
+You will need to supply some additional parameters, as the restore operation creates a new logical cluster.
+
+![image](https://user-images.githubusercontent.com/113181949/217636989-6ddff387-e3a5-449e-9789-55e7ed755b82.png)
 
 
