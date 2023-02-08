@@ -563,6 +563,7 @@ LAB03 Performing Kubernetes Upgrade
 ===============
 
 Kubernetes Cluster
+
 ![image](https://user-images.githubusercontent.com/113181949/217599835-b9b34622-2cbe-4f06-83aa-60339c073d51.png)
 
 In this cluster we have three servers; One controle plane and two worker nodes. The cluster was built with Kubeadm.
