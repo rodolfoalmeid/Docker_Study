@@ -20,6 +20,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 5. [Namespaces in K8s](#namespaces-in-k8s)
 6. [LAB02 Working with Kubernetes Namespaces](#LAB02-working-with-kubernetes-namespaces)
 7. [Kubernetes Management](#kubernetes-management)
+8. [LAB03 Performing Kubernetes Upgrade](#LAB03-performing-kubernetes-upgrade)
 
 ---------------
 
@@ -556,3 +557,15 @@ Repeat the upgrade process to the other worker nodes.
 
 Verify that the cluster is upgraded and working.
 kubectl get nodes
+
+
+LAB03 Performing Kubernetes Upgrade
+===============
+
+Kubernetes Cluster
+![image](https://user-images.githubusercontent.com/113181949/217599835-b9b34622-2cbe-4f06-83aa-60339c073d51.png)
+
+In this cluster we have three servers; One controle plane and two worker nodes. The cluster was built with Kubeadm.
+First we need to upgrade the control plane and then the worker nodes.
+
+
