@@ -22,7 +22,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 7. [Kubernetes Management](#kubernetes-management)
 8. [LAB03 Performing Kubernetes Upgrade](#LAB03-performing-kubernetes-upgrade)
 9. [Backing Up and Restoring Etcd Cluster Data](#backing-up-and-restoring-etcd-cluster-data)
-10. [LAB04 Backing Up and Restoring Etcd](#LAB03-backing-up-and-restoring-etcd)
+10. [LAB04 Backing Up and Restoring Etcd](#LAB04-backing-up-and-restoring-etcd)
 
 ---------------
 
@@ -616,5 +616,6 @@ ETCDCTL_API=3 etcdctl get cluster.name \
 ```
 
 The output should be something similar to:
+
 ![image](https://user-images.githubusercontent.com/113181949/218561066-5ed91258-9b4d-40b8-9ac7-79166822b4be.png)
 
