@@ -22,6 +22,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 7. [Kubernetes Management](#kubernetes-management)
 8. [LAB03 Performing Kubernetes Upgrade](#LAB03-performing-kubernetes-upgrade)
 9. [Backing Up and Restoring Etcd Cluster Data](#backing-up-and-restoring-etcd-cluster-data)
+10. [LAB04 Backing Up and Restoring Etcd](#LAB03-backing-up-and-restoring-etcd)
 
 ---------------
 
@@ -598,4 +599,22 @@ You will need to supply some additional parameters, as the restore operation cre
 
 ![image](https://user-images.githubusercontent.com/113181949/217636989-6ddff387-e3a5-449e-9789-55e7ed755b82.png)
 
+
+LAB04 Backing Up and Restoring Etcd
+===
+
+![image](https://user-images.githubusercontent.com/113181949/218560253-218ae9af-b973-4417-a331-31ac0bced929.png)
+
+Step 01 - Check the variable
+
+```
+ETCDCTL_API=3 etcdctl get cluster.name \
+> --endpoints=https://10.0.1.101:2379 \
+> --cacert=/home/cloud_user/etcd-certs/etcd-ca.pem \
+> --cert=/home/cloud_user/etcd-certs/etcd-server.crt \
+> --key=/home/cloud_user/etcd-certs/etcd-server.key
+```
+
+The output should be something similar to:
+![image](https://user-images.githubusercontent.com/113181949/218561066-5ed91258-9b4d-40b8-9ac7-79166822b4be.png)
 
