@@ -655,3 +655,12 @@ sudo ETCDCTL_API=3 etcdctl snapshot restore /home/cloud_user/etcd_backup.db \
 > --name etcd-restore \
 > --data-dir /var/lib/etcd
 ```
+
+The output should be something similar to:
+
+![image](https://user-images.githubusercontent.com/113181949/218563687-edee8404-604d-401e-b60d-e0c8510e3441.png)
+
+
+### Step 04 - Check Etcd 
+
+![image](https://user-images.githubusercontent.com/113181949/218564201-6d3414fd-1043-4ce6-a3da-66d9f72ddb63.png)
