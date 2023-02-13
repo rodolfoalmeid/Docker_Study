@@ -605,7 +605,7 @@ LAB04 Backing Up and Restoring Etcd
 
 ![image](https://user-images.githubusercontent.com/113181949/218560253-218ae9af-b973-4417-a331-31ac0bced929.png)
 
-Step 01 - Check the variable
+#### Step 01 - Check the variable
 
 ```
 ETCDCTL_API=3 etcdctl get cluster.name \
@@ -619,3 +619,39 @@ The output should be something similar to:
 
 ![image](https://user-images.githubusercontent.com/113181949/218561066-5ed91258-9b4d-40b8-9ac7-79166822b4be.png)
 
+
+#### Step 02 - Taking a Snapshot from Etcd data base
+
+```
+ETCDCTL_API=3 etcdctl snapshot save /home/cloud_user/etcd_backup.db \
+> --endpoints=https://10.0.1.101:2379 \
+> --cacert=/home/cloud_user/etcd-certs/etcd-ca.pem \
+> --cert=/home/cloud_user/etcd-certs/etcd-server.crt \
+> --key=/home/cloud_user/etcd-certs/etcd-server.key
+```
+
+The output should be something similar to:
+
+![image](https://user-images.githubusercontent.com/113181949/218561856-c6ad1626-e12c-466c-8a0e-eedfdcd3c16b.png)
+
+
+### Step 03 - Reset the cluster data
+
+```
+sudo systemctl stop etcd
+```
+
+```
+sudo rm -rf /var/lib/etcd
+```
+r — recusrsive. all directories and subdirectories will be deleted;
+f — force. Force delete all files;
+
+
+```
+sudo ETCDCTL_API=3 etcdctl snapshot restore /home/cloud_user/etcd_backup.db \
+> --initial-cluster etcd-restore=https://10.0.1.101:2380 \
+> --initial-advertise-peer-urls https://10.0.1.101:2380 \
+> --name etcd-restore \
+> --data-dir /var/lib/etcd
+```
