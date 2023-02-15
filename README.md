@@ -609,10 +609,10 @@ LAB04 Backing Up and Restoring Etcd
 
 ```
 ETCDCTL_API=3 etcdctl get cluster.name \
-> --endpoints=https://10.0.1.101:2379 \
-> --cacert=/home/cloud_user/etcd-certs/etcd-ca.pem \
-> --cert=/home/cloud_user/etcd-certs/etcd-server.crt \
-> --key=/home/cloud_user/etcd-certs/etcd-server.key
+--endpoints=https://10.0.1.101:2379 \
+--cacert=/home/cloud_user/etcd-certs/etcd-ca.pem \
+--cert=/home/cloud_user/etcd-certs/etcd-server.crt \
+--key=/home/cloud_user/etcd-certs/etcd-server.key
 ```
 
 The output should be something similar to:
@@ -624,10 +624,10 @@ The output should be something similar to:
 
 ```
 ETCDCTL_API=3 etcdctl snapshot save /home/cloud_user/etcd_backup.db \
-> --endpoints=https://10.0.1.101:2379 \
-> --cacert=/home/cloud_user/etcd-certs/etcd-ca.pem \
-> --cert=/home/cloud_user/etcd-certs/etcd-server.crt \
-> --key=/home/cloud_user/etcd-certs/etcd-server.key
+--endpoints=https://10.0.1.101:2379 \
+--cacert=/home/cloud_user/etcd-certs/etcd-ca.pem \
+--cert=/home/cloud_user/etcd-certs/etcd-server.crt \
+--key=/home/cloud_user/etcd-certs/etcd-server.key
 ```
 
 The output should be something similar to:
@@ -650,10 +650,10 @@ f — force. Force delete all files;
 
 ```
 sudo ETCDCTL_API=3 etcdctl snapshot restore /home/cloud_user/etcd_backup.db \
-> --initial-cluster etcd-restore=https://10.0.1.101:2380 \
-> --initial-advertise-peer-urls https://10.0.1.101:2380 \
-> --name etcd-restore \
-> --data-dir /var/lib/etcd
+--initial-cluster etcd-restore=https://10.0.1.101:2380 \
+--initial-advertise-peer-urls https://10.0.1.101:2380 \
+--name etcd-restore \
+--data-dir /var/lib/etcd
 ```
 
 The output should be something similar to:
