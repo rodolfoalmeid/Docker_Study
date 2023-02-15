@@ -667,7 +667,7 @@ The output should be something similar to:
 ![image](https://user-images.githubusercontent.com/113181949/218564201-6d3414fd-1043-4ce6-a3da-66d9f72ddb63.png)
 
 
-Working with kubctl
+Working with kubectl
 ===
 
 ### What is kubectl?
@@ -678,9 +678,13 @@ kubectl is a command line tool that allows you to interact with Kubernetes. kube
 
 Use kubectl get to list objects in the Kubernetes cluster.
 
-- `-o`Set the output format
-- `--sort-by` - Sort output using a JSONPath expression.
-- `--selector` - Filter results by label.
+- `-o`  - Set the output format
+- `--sort-by`  - Sort output using a JSONPath expression.
+- `--selector`  - Filter results by label.
+
+```$ kubectl get <object type> <object name> -o <output> --sort-by <JSONPath> --selector <selector>
+```
+
 
 
 
