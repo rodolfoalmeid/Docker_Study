@@ -682,7 +682,8 @@ Use kubectl get to list objects in the Kubernetes cluster.
 - `--sort-by`  - Sort output using a JSONPath expression.
 - `--selector`  - Filter results by label.
 
-```$ kubectl get <object type> <object name> -o <output> --sort-by <JSONPath> --selector <selector>
+```
+$ kubectl get <object type> <object name> -o <output> --sort-by <JSONPath> --selector <selector>
 ```
 
 
