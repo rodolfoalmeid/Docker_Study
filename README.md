@@ -676,7 +676,7 @@ kubectl is a command line tool that allows you to interact with Kubernetes. kube
 
 ### kubectl get
 
-Use kubectl get to list objects in the Kubernetes cluster.
+Use **kubectl get** to list objects in the Kubernetes cluster.
 
 - `-o`  - Set the output format
 - `--sort-by`  - Sort output using a JSONPath expression.
@@ -686,6 +686,48 @@ Use kubectl get to list objects in the Kubernetes cluster.
 $ kubectl get <object type> <object name> -o <output> --sort-by <JSONPath> --selector <selector>
 ```
 
+### kubectl describe
 
+You can get detailed information about Kubernetes objects using kubectl describe.
 
+```
+kubectl describe <object type> <object name>
+```
 
+### kubectl create
+
+Use **kubectl create** to create objects.
+
+Supply a YAML file with -f o create an object from a YAML descriptor stored in the file.
+If you attempt to create an object that already exists, an error will occur.
+
+```
+kubectl create -f <file name>
+```
+
+### kubectl apply
+
+kubectl apply is similar to kubectl create. However, if you use kubectl apply on an object that already exists, it will modify the existing object, if possible.
+
+```
+$ kubectl apply -f <file name>
+```
+
+### kubectl delete
+
+Use **kubectl delete** to delete objects from the cluster.
+
+```
+kubectl delete <object type> <object name>
+```
+
+### kubectl exec
+
+**kubectl exec** can be used to run commnds inside containers. Keep in mind that, in order for a command to succeed, the necessary software must exist within the container to run it.
+
+```
+kubectl exec <pod name> -c <container name> -- <command>
+```
+
+   > __Note__ 
+   >  `-c` is used only if your pod has multiple containers, with that flag you can specify the container.
