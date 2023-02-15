@@ -23,6 +23,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 8. [LAB03 Performing Kubernetes Upgrade](#LAB03-performing-kubernetes-upgrade)
 9. [Backing Up and Restoring Etcd Cluster Data](#backing-up-and-restoring-etcd-cluster-data)
 10. [LAB04 Backing Up and Restoring Etcd](#LAB04-backing-up-and-restoring-etcd)
+11. [Working with kubectl](#working-with-kubectl)
 
 ---------------
 
@@ -664,3 +665,22 @@ The output should be something similar to:
 ### Step 04 - Check Etcd 
 
 ![image](https://user-images.githubusercontent.com/113181949/218564201-6d3414fd-1043-4ce6-a3da-66d9f72ddb63.png)
+
+
+Working with kubctl
+===
+
+### What is kubectl?
+
+kubectl is a command line tool that allows you to interact with Kubernetes. kubectl uses the Kubernetes API to communicate with the cluster and carry out your commands. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs.
+
+### kubectl get
+
+Use kubectl get to list objects in the Kubernetes cluster.
+
+- `-o`Set the output format
+- `--sort-by` - Sort output using a JSONPath expression.
+- `--selector` - Filter results by label.
+
+
+
