@@ -679,8 +679,19 @@ kubectl is a command line tool that allows you to interact with Kubernetes. kube
 Use **kubectl get** to list objects in the Kubernetes cluster.
 
 - `-o`  - Set the output format
+   
+   ```kubectl get pods -o wide``` >> Wide provides more detailed information about the command.
+   
+   ```kubectl get pods -o json``` >> Gives the output in json format
+   
+   ```kubectl get pods -o yaml``` >> Gives the output in yaml format
+   
 - `--sort-by`  - Sort output using a JSONPath expression.
+   
 - `--selector`  - Filter results by label.
+
+   ```kubectl get pods -n kube-system --selector k8s-app=calico-node``` >> this will show the pods that contains this lable.
+
 
 ```
 $ kubectl get <object type> <object name> -o <output> --sort-by <JSONPath> --selector <selector>
