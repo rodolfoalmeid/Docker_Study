@@ -744,8 +744,12 @@ kubectl exec <pod name> -c <container name> -- <command>
    > __Note__ 
    >  `-c` is used only if your pod has multiple containers, with that flag you can specify the container.
 
+
 kubectl Tips
 ===
+
+
+*[kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)*
 
 Run kubectl create to see a list of objects that can be created with imperative commands.
 
