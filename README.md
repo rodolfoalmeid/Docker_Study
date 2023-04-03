@@ -748,6 +748,16 @@ kubectl exec <pod name> -c <container name> -- <command>
 kubectl Tips
 ===
 
+### Imperative Commands ###
+There are the Declarative and the Imperative commands in kubernetes.
+The **Declarative** command define objects using data structures such as YAML or JSON.
+The **Imperative** command define objects using kubectl commands and flags. 
+
+Example of Imperative command:
+
+```
+kubectl create deployment my-deployment --image=nginx
+```
 
 *[kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)*
 
