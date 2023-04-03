@@ -24,6 +24,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 9. [Backing Up and Restoring Etcd Cluster Data](#backing-up-and-restoring-etcd-cluster-data)
 10. [LAB04 Backing Up and Restoring Etcd](#LAB04-backing-up-and-restoring-etcd)
 11. [Working with kubectl](#working-with-kubectl)
+12. [kubectl Tips](#kubectl-tips)
 
 ---------------
 
@@ -742,3 +743,44 @@ kubectl exec <pod name> -c <container name> -- <command>
 
    > __Note__ 
    >  `-c` is used only if your pod has multiple containers, with that flag you can specify the container.
+
+kubectl Tips
+===
+
+Run kubectl create to see a list of objects that can be created with imperative commands.
+
+```
+kubectl create
+```
+
+Create a deployment imperatively.
+
+```
+kubectl create deployment my-deployment --image=nginx
+```
+
+Do a dry run to get some sample yaml without creating the object.
+
+```
+kubectl create deployment my-deployment --image=nginx --dry-run -o yaml
+```
+
+Save the yaml to a file.
+
+```
+kubectl create deployment my-deployment --image=nginx --dry-run -o yaml > deployment.yml
+```
+
+
+Create the object using the file.
+
+```
+kubectl create -f deployment.yml
+```
+
+Scale a deployment and record the command.
+
+```
+kubectl scale deployment my-deployment replicas=5 --record
+kubectl describe deployment my-deployment
+```
