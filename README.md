@@ -769,6 +769,10 @@ Do a dry run to get some sample yaml without creating the object.
 kubectl create deployment my-deployment --image=nginx --dry-run -o yaml
 ```
 
+   > __Note__ 
+   > Dry run is an expression used to indicate a rehearsal of a performance or procedure before the real one. Dry run mode gives you the possibility of issuing a command without side effects for testing an actual command that you intend to run.
+
+
 Save the yaml to a file.
 
 ```
