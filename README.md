@@ -802,3 +802,20 @@ Scale a deployment and record the command.
 kubectl scale deployment my-deployment replicas=5 --record
 kubectl describe deployment my-deployment
 ```
+
+RBAC i k8s
+===
+
+Role-based access control (RBAC) in k8s allows you to control what users are allowed to do and access within your cluster. For example, you can use RBAC to allow developers to read metadata and logs from kubernetes pods but not make changes to them.
+
+***RBAC Objects***
+
+**Roles** and **ClusterRoles** are kubernetes objects that define a set of permissions. These permissions determine what users can do in the cluster. A Role defines permissions within a particular namespace, and a ClusterRole defines cluster-wide permissions not specific to a single namespace.
+
+
+**RoleBinding** and **ClusterRoleBinding** are objects that connect Roles and ClusterRoles to users.
+
+![image](https://user-images.githubusercontent.com/113181949/229827690-e1ac1e91-4d69-4221-80c7-0074d58590c9.png)
+
+
+
