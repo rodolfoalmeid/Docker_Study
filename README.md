@@ -710,7 +710,7 @@ kubectl describe <object type> <object name>
 
 Use **kubectl create** to create objects.
 
-Supply a YAML file with -f o create an object from a YAML descriptor stored in the file.
+Supply a YAML file with -f create an object from a YAML descriptor stored in the file.
 If you attempt to create an object that already exists, an error will occur.
 
 ```
