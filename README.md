@@ -25,6 +25,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 10. [LAB04 Backing Up and Restoring Etcd](#LAB04-backing-up-and-restoring-etcd)
 11. [Working with kubectl](#working-with-kubectl)
 12. [kubectl Tips](#kubectl-tips)
+13. [RBAC i k8s](#rbac-in-k8s)
 
 ---------------
 
@@ -803,7 +804,7 @@ kubectl scale deployment my-deployment replicas=5 --record
 kubectl describe deployment my-deployment
 ```
 
-RBAC i k8s
+RBAC in k8s
 ===
 
 Role-based access control (RBAC) in k8s allows you to control what users are allowed to do and access within your cluster. For example, you can use RBAC to allow developers to read metadata and logs from kubernetes pods but not make changes to them.
