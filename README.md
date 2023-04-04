@@ -25,7 +25,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 10. [LAB04 Backing Up and Restoring Etcd](#LAB04-backing-up-and-restoring-etcd)
 11. [Working with kubectl](#working-with-kubectl)
 12. [kubectl Tips](#kubectl-tips)
-13. [RBAC i k8s](#rbac-in-k8s)
+13. [RBAC in k8s](#rbac-in-k8s)
 
 ---------------
 
@@ -816,7 +816,7 @@ Role-based access control (RBAC) in k8s allows you to control what users are all
 
 **RoleBinding** and **ClusterRoleBinding** are objects that connect Roles and ClusterRoles to users.
 
-![image](https://user-images.githubusercontent.com/113181949/229827690-e1ac1e91-4d69-4221-80c7-0074d58590c9.png)
+![image](https://user-images.githubusercontent.com/113181949/229828229-9b8ed41c-41ba-4657-ba04-1e1c215291e8.png)
 
 
 
