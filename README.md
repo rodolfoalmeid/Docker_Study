@@ -26,6 +26,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 11. [Working with kubectl](#working-with-kubectl)
 12. [kubectl Tips](#kubectl-tips)
 13. [RBAC in k8s](#rbac-in-k8s)
+14. [Creating Service Accounts](#creating-service-accounts)
 
 ---------------
 
@@ -818,5 +819,122 @@ Role-based access control (RBAC) in k8s allows you to control what users are all
 
 ![image](https://user-images.githubusercontent.com/113181949/229828229-9b8ed41c-41ba-4657-ba04-1e1c215291e8.png)
 
+***Lesson Reference***
 
+Create a Role spec file.
 
+```
+vi role.yml
+```
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+namespace: default
+name: pod-reader
+rules:
+- apiGroups: [""]
+resources: ["pods", "pods/log"]
+verbs: ["get", "watch", "list"]
+```
+
+Create the Role.
+
+```
+kubectl apply -f role.yml
+```
+
+Bind the role to the dev user.
+
+```
+vi rolebinding.yml
+```
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+name: pod-reader
+namespace: default
+subjects:
+- kind: User
+name: dev
+apiGroup: rbac.authorization.k8s.io
+roleRef:
+kind: Role
+name: pod-reader
+apiGroup: rbac.authorization.k8s.io
+Create the RoleBinding.
+```
+```
+kubectl apply -f rolebinding.yml
+```
+
+Creating Service Accounts
+===
+
+**What is a Service Account**
+Is an account used by container processes within Pods to authenticate with the k8s API.
+If your Pods need to communicate with the k8s API, you can use service accounts to control their access.
+
+**Creating Service Accounts**
+A service account object can be created with some YAML just like any other k8s object.
+
+**Binding Roles to Service Accounts**
+You can manage access control for service accounts, just like any other user, using RBAC objects. Bind service accounts with RoleBindings or ClusterRoleBindings to provide access to k8s API functionality.
+
+Create a basic ServiceAccount.
+
+```
+vi my-serviceaccount.yml
+```
+```
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+name: my-serviceaccount
+```
+```
+kubectl create -f my-serviceaccount.yml
+```
+
+Create a ServiceAccount with an imperative command.
+
+```
+kubectl create sa my-serviceaccount2 -n default
+```
+
+View your ServiceAccount.
+
+```
+kubectl get sa
+```
+
+Attach a Role to the ServiceAccount with a RoleBinding.
+
+```
+vi sa-pod-reader.yml
+```
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+name: sa-pod-reader
+namespace: default
+subjects:
+- kind: ServiceAccount
+name: my-serviceaccount
+namespace: default
+roleRef:
+kind: Role
+name: pod-reader
+apiGroup: rbac.authorization.k8s.io
+```
+```
+kubectl create -f sa-pod-reader.yml
+```
+
+Get additional information for the ServiceAccount.
+
+```
+kubectl describe sa my-serviceaccount
+```
