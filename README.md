@@ -27,6 +27,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 12. [kubectl Tips](#kubectl-tips)
 13. [RBAC in k8s](#rbac-in-k8s)
 14. [Creating Service Accounts](#creating-service-accounts)
+15. [Inspecting Pod Resource Usage](#inspecting-pod-resource-usage)
 
 ---------------
 
@@ -938,3 +939,69 @@ Get additional information for the ServiceAccount.
 ```
 kubectl describe sa my-serviceaccount
 ```
+
+Inspecting Pod Resource Usage
+===
+
+**Kubernetes Metrics Server**
+
+In order to view metrics about the resources pods and containers are using, we need an add-on to collect and provide that data. One such add-on is **Kubernetes Metrics Server**. This needs to be manually installed after a kubernetes cluster has been deployed.
+
+**kubectl top**
+With kubectl top, you can view data about resource usage in your pods and nodes. kubectl top also support flags like --sort-by and --selector.
+
+```
+kubectl top pod --sort-by <JSONPATH> --selector <selector>
+```
+```
+kubectl top node
+```
+
+**Installing Metrics Server and tesing top command**
+
+Install Kubernetes Metrics Server.
+```
+https://raw.githubusercontent.com/linuxacademy/content-cka-resources/master/metrics-server-components.yaml
+```
+
+Verify that the metrics server is responsive. Note that it may take a few minutes for the metrics server to become responsive to
+requests.
+```
+kubectl get --raw /apis/metrics.k8s.io/
+```
+
+Create a pod to monitor.
+```
+vi pod.yml
+```
+```
+apiVersion: v1
+kind: Pod
+metadata:
+name: my-pod
+labels:
+ app: metrics-test
+spec:
+containers:
+- name: busybox
+image: radial/busyboxplus:curl
+command: ['sh', '-c', 'while true; do sleep 3600; done']
+```
+```
+kubectl apply -f pod.yml
+```
+
+Use  kubectl top  to view resource usage by pod.
+```
+kubectl top pod
+```
+
+Sort output with  --sort-by .
+```
+kubectl top pod --sort-by cpu
+```
+Filter output by label with  --selector .
+```
+kubectl top pod --selector app=metrics-test
+```
+
