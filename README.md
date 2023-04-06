@@ -1090,11 +1090,20 @@ k8s provides a number of features that allow you to build robust solutions, such
 ## Liveness Probes
 Allow you to automatically determine wether or not a container application is in a healthy state. By default, k8s will only consider a container to be down if the container process stops. Liveness probes allow you rto customize this detection mechanism and make it more sphisticated.
 
+![image](https://user-images.githubusercontent.com/113181949/230412110-4f02cf82-a046-4fd1-9047-bc0773649c99.png)
+
+
 ## Startup Probes
 Are very similar to liveness probes. However, while liveness probes run contantly on a shcedule, startup probes run at container startup and stop running once they succeed. They are used to determine when the application has successfully started up. Startup probes are especially useful for legacy applications that can have long startup times.
 
+![image](https://user-images.githubusercontent.com/113181949/230412952-892cdcb8-e56c-4322-b51a-d10b5e8a58bd.png)
+
+
 ## Readiness Probes
 Are used to determine when a container is ready to accept requests. When you have a service backed by multiple container endpoints, user traffic will not be sent to a particular pod until its containers have all passed the readiness checks defined by their readiness probes. Use readiness probes to prevent user traffic from being sent to pods that are still in the process of starting up.
+
+![image](https://user-images.githubusercontent.com/113181949/230413499-deb6f470-2887-4a93-88f5-50b6be1ce383.png)
+
 
 ## Lesson Reference
 
