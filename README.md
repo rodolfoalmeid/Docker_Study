@@ -29,6 +29,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 14. [Creating Service Accounts](#creating-service-accounts)
 15. [Inspecting Pod Resource Usage](#inspecting-pod-resource-usage)
 16. [Managing Application Configuration](#managing-application-configuration)
+17. [Managing Containers Resources](#managing-containers-resources)
 
 ---------------
 
@@ -1052,4 +1053,28 @@ Each top-level key in the configuration data will appear as a file containing al
 ## Lesson Reference
 
 [Managing Application Configuration.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11170643/1597437360824-devops-wb002.-.S05-L02.Managing.Application.Configuration.pdf)
+
+
+Managing Containers Resources
+===
+
+## Resource Requests
+It allow you to define an amount of resources (such CPU or memory) you expect a container to use. The Kubernetes scheduler will use resource requests to avoid scheduling pods on nodes that do not have nough available resources.
+
+   > __Note__ 
+   > Containers are allowed to use more (or less) than the requested resources. Resource requests only affect scheduling.
+
+![image](https://user-images.githubusercontent.com/113181949/230402486-23120793-b732-49d4-8af6-3be54b381d46.png)
+
+   > __Note__ 
+   > Memory is measured in bytes and CPU is measured in CPU units.
+
+
+## Resource Limits
+Provide a way for you to limit the amount of resources your containers can use. The container runtime is responsible for enforcing these limits, and different container runtimes do this differently.
+
+   > __Note__ 
+   > Some runtimes will enforce these limits by terminating container process that attempt to use more than the allowed amount of resources.
+
+![image](https://user-images.githubusercontent.com/113181949/230403521-30483b72-be09-40a5-ad3d-f3d6f119d93e.png)
 
