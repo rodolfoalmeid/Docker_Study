@@ -1051,5 +1051,5 @@ Each top-level key in the configuration data will appear as a file containing al
 
 ## Lesson Reference
 
-[1597437360824-devops-wb002 - S05-L02 Managing Application Configuration.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11170643/1597437360824-devops-wb002.-.S05-L02.Managing.Application.Configuration.pdf)
+[Managing Application Configuration.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11170643/1597437360824-devops-wb002.-.S05-L02.Managing.Application.Configuration.pdf)
 
