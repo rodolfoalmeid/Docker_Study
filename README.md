@@ -1044,4 +1044,8 @@ You can pass ConfigMaps and Secret data to your containers as environment variab
 
 ## Configuration Volumes
 Configuration data from ConfigMaps and Secrets can also be passed to containers in the form of **mounted volumes**. This will cause the configuration data to appear in files available to the container file system.
+Each top-level key in the configuration data will appear as a file containing all keys below that top-lvel key.
+
+![image](https://user-images.githubusercontent.com/113181949/230378303-d943637c-550d-4dcf-b1df-e1f18a1adda3.png)
+
 
