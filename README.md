@@ -1049,3 +1049,7 @@ Each top-level key in the configuration data will appear as a file containing al
 ![image](https://user-images.githubusercontent.com/113181949/230378303-d943637c-550d-4dcf-b1df-e1f18a1adda3.png)
 
 
+## Lesson Reference
+
+[1597437360824-devops-wb002 - S05-L02 Managing Application Configuration.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11170643/1597437360824-devops-wb002.-.S05-L02.Managing.Application.Configuration.pdf)
+
