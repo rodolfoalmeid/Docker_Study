@@ -30,6 +30,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 15. [Inspecting Pod Resource Usage](#inspecting-pod-resource-usage)
 16. [Managing Application Configuration](#managing-application-configuration)
 17. [Managing Containers Resources](#managing-containers-resources)
+18. [Monitoring Container Health with Probes](#monitoring-container-health-with-probes)
 
 ---------------
 
@@ -1077,4 +1078,25 @@ Provide a way for you to limit the amount of resources your containers can use. 
    > Some runtimes will enforce these limits by terminating container process that attempt to use more than the allowed amount of resources.
 
 ![image](https://user-images.githubusercontent.com/113181949/230403521-30483b72-be09-40a5-ad3d-f3d6f119d93e.png)
+
+
+
+Monitoring Container Health with Probes
+===
+
+## Container Health
+k8s provides a number of features that allow you to build robust solutions, such as the ability to automatically restart unhealthy containers. To make the most of these features, k8s needs to be able to accurately determine the status of your applications. This means actively monitoring container health.
+
+## Liveness Probes
+Allow you to automatically determine wether or not a container application is in a healthy state. By default, k8s will only consider a container to be down if the container process stops. Liveness probes allow you rto customize this detection mechanism and make it more sphisticated.
+
+## Startup Probes
+Are very similar to liveness probes. However, while liveness probes run contantly on a shcedule, startup probes run at container startup and stop running once they succeed. They are used to determine when the application has successfully started up. Startup probes are especially useful for legacy applications that can have long startup times.
+
+## Readiness Probes
+Are used to determine when a container is ready to accept requests. When you have a service backed by multiple container endpoints, user traffic will not be sent to a particular pod until its containers have all passed the readiness checks defined by their readiness probes. Use readiness probes to prevent user traffic from being sent to pods that are still in the process of starting up.
+
+## Lesson Reference
+
+[Monitoring Container Health with Probes.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11171607/1597437462380-devops-wb002.-.S05-L04.Monitoring.Container.Health.with.Probes.pdf)
 
