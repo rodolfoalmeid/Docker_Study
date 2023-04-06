@@ -28,6 +28,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 13. [RBAC in k8s](#rbac-in-k8s)
 14. [Creating Service Accounts](#creating-service-accounts)
 15. [Inspecting Pod Resource Usage](#inspecting-pod-resource-usage)
+16. [Managing Application Configuration](#managing-application-configuration)
 
 ---------------
 
@@ -751,7 +752,7 @@ kubectl exec <pod name> -c <container name> -- <command>
 kubectl Tips
 ===
 
-### Imperative Commands ###
+## Imperative Commands
 There are the Declarative and the Imperative commands in kubernetes.
 The **Declarative** command define objects using data structures such as YAML or JSON.
 The **Imperative** command define objects using kubectl commands and flags. 
@@ -811,7 +812,7 @@ RBAC in k8s
 
 Role-based access control (RBAC) in k8s allows you to control what users are allowed to do and access within your cluster. For example, you can use RBAC to allow developers to read metadata and logs from kubernetes pods but not make changes to them.
 
-***RBAC Objects***
+## RBAC Objects
 
 **Roles** and **ClusterRoles** are kubernetes objects that define a set of permissions. These permissions determine what users can do in the cluster. A Role defines permissions within a particular namespace, and a ClusterRole defines cluster-wide permissions not specific to a single namespace.
 
@@ -820,7 +821,7 @@ Role-based access control (RBAC) in k8s allows you to control what users are all
 
 ![image](https://user-images.githubusercontent.com/113181949/229828229-9b8ed41c-41ba-4657-ba04-1e1c215291e8.png)
 
-***Lesson Reference***
+## Lesson Reference
 
 Create a Role spec file.
 
@@ -873,14 +874,14 @@ kubectl apply -f rolebinding.yml
 Creating Service Accounts
 ===
 
-**What is a Service Account**
+## What is a Service Account
 Is an account used by container processes within Pods to authenticate with the k8s API.
 If your Pods need to communicate with the k8s API, you can use service accounts to control their access.
 
-**Creating Service Accounts**
+## Creating Service Accounts
 A service account object can be created with some YAML just like any other k8s object.
 
-**Binding Roles to Service Accounts**
+## Binding Roles to Service Accounts
 You can manage access control for service accounts, just like any other user, using RBAC objects. Bind service accounts with RoleBindings or ClusterRoleBindings to provide access to k8s API functionality.
 
 Create a basic ServiceAccount.
@@ -943,11 +944,11 @@ kubectl describe sa my-serviceaccount
 Inspecting Pod Resource Usage
 ===
 
-**Kubernetes Metrics Server**
+## Kubernetes Metrics Server
 
 In order to view metrics about the resources pods and containers are using, we need an add-on to collect and provide that data. One such add-on is **Kubernetes Metrics Server**. This needs to be manually installed after a kubernetes cluster has been deployed.
 
-**kubectl top**
+## kubectl top
 With kubectl top, you can view data about resource usage in your pods and nodes. kubectl top also support flags like --sort-by and --selector.
 
 ```
@@ -957,7 +958,7 @@ kubectl top pod --sort-by <JSONPATH> --selector <selector>
 kubectl top node
 ```
 
-**Installing Metrics Server and tesing top command**
+## Installing Metrics Server and tesing top command
 
 Install Kubernetes Metrics Server.
 ```
@@ -1004,4 +1005,43 @@ Filter output by label with  --selector .
 ```
 kubectl top pod --selector app=metrics-test
 ```
+
+Managing Application Configuration
+===
+
+## Application Configuration
+
+When you are running applications in kubernetes, you may want to pass dynamic values to your applications at runtime to controll how they behave. This is known as **application configuration**
+We will pass data to our containers that is going to control what those containers do and how they run.
+
+## ConfigMaps
+This is one of the primary ways to store configuration data in kubernetes.
+You can store configuration data in kubernetes using Config Maps.
+ConfigMaps store data in the form of a key-value map. ConfigMap data can be passed to your container applications.
+
+![image](https://user-images.githubusercontent.com/113181949/230373131-cae47a00-4e6c-4b02-bf55-ae4220683e22.png)
+
+IMPORTANT ITENS!!
+
+**data section**
+It is just a yaml data. It is a map of value key pairs
+
+**multi-line data**
+You can specify a configuration file to be applyied to one of your containers.
+
+
+## Secrets
+This is another way to store data in kubernetes. Secrets are similar to ConfigMaps but are designed to store sensitive data, such as passwords or API keys, more securely. They are created and used similarly to ConfigMaps.
+
+![image](https://user-images.githubusercontent.com/113181949/230374033-fd18bfb8-c971-4fad-b0c2-bcdf4f52bee7.png)
+
+
+## Environment Variables
+You can pass ConfigMaps and Secret data to your containers as environment variables. These variables will be visable to your container process at runtime.
+
+![image](https://user-images.githubusercontent.com/113181949/230376421-a93094a4-0ab4-42e2-95f0-ffa55be243cf.png)
+
+
+## Configuration Volumes
+Configuration data from ConfigMaps and Secrets can also be passed to containers in the form of **mounted volumes**. This will cause the configuration data to appear in files available to the container file system.
 
