@@ -31,6 +31,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 16. [Managing Application Configuration](#managing-application-configuration)
 17. [Managing Containers Resources](#managing-containers-resources)
 18. [Monitoring Container Health with Probes](#monitoring-container-health-with-probes)
+19. [Building Self-Healing Pods](#building-self-healing-pods)
 
 ---------------
 
@@ -1109,3 +1110,131 @@ Are used to determine when a container is ready to accept requests. When you hav
 
 [Monitoring Container Health with Probes.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11171607/1597437462380-devops-wb002.-.S05-L04.Monitoring.Container.Health.with.Probes.pdf)
 
+
+Building Self-Healing Pods
+===
+
+## Restart Policies
+
+K8s can automatically restart containers when they fail. **Restart Policies**allow you to customize this behavior by defining when you want a pod's containers to be automatically restarted. Restart policies are an important component of self-healing applications, which are automatically repaired when a problem araises. There are three possible values for a pod's restart policy in k8s: Always, OnFailure, and Never.
+
+### Always
+Always is the default restart policy in k8s. With this policy, containers will always be restarted if they stop, even if they completed successfully. Use this policy for applications that should always be running.
+
+### OnFailure
+The OnFailure restart policy will restart containers only if the container process exits with an error code or the container is determined to be unhealthy by a liveness probe. Use this policy for applications that need to run successfully and then stop.
+
+### Never
+The Never restart policy will cause the pod's containers to never be restarted, even if the containerexits or a liveness probe fails. Use this for applications that should run once and never be automatically restarted.
+
+### Lesson Reference
+
+Create a pod with the Always restart policy that completes after a few seconds.
+
+```
+vi always-pod.yml
+```
+```
+apiVersion: v1
+kind: Pod
+metadata:
+name: always-pod
+spec:
+restartPolicy: Always
+containers:
+- name: busybox
+image: busybox
+command: ['sh', '-c', 'sleep 10']
+```
+```
+kubectl create -f always-pod.yml
+```
+
+Check the pod status. You should see it restarting after every 10-second completion.
+
+```
+kubectl get pod always-pod
+```
+
+Create a pod with the OnFailure restart policy.
+
+```
+vi onfailure-pod.yml
+```
+```
+apiVersion: v1
+kind: Pod
+metadata:
+name: onfailure-pod
+spec:
+restartPolicy: OnFailure
+containers:
+- name: busybox
+image: busybox
+command: ['sh', '-c', 'sleep 10']
+```
+
+```
+kubectl create -f onfailure-pod.yml
+```
+
+Check the pod status. Note that the pod does not restart because it completed successfully.
+
+```
+kubectl get pod onfailure-pod
+```
+
+Delete, modify, and recreate the pod so that it fails.
+
+```
+vi onfailure-pod.yml
+```
+```
+apiVersion: v1
+kind: Pod
+metadata:
+name: onfailure-pod
+spec:
+restartPolicy: OnFailure
+containers:
+- name: busybox
+image: busybox
+command: ['sh', '-c', 'sleep 10; this is a bad command that will fail']
+```
+```
+kubectl create -f onfailure-pod.yml
+```
+
+Check the pod status. Note that the pod restarts because it exited with an error code.
+
+```
+kubectl get pod onfailure-pod
+```
+
+Create a pod with the Never restart policy that completes after a few seconds.
+
+```
+vi never-pod.yml
+```
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+name: never-pod
+spec:
+restartPolicy: Never
+containers:
+- name: busybox
+image: busybox
+command: ['sh', '-c', 'sleep 10; this is a bad command that will fail']
+```
+```
+kubectl create -f never-pod.yml
+```
+
+Check the pod status. You should see that it does not restart after completing.
+
+```
+kubectl get pod never-pod
+```
