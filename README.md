@@ -33,6 +33,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 18. [Monitoring Container Health with Probes](#monitoring-container-health-with-probes)
 19. [Building Self-Healing Pods](#building-self-healing-pods)
 20. [Multi-Container Pod](#multi-container-pod)
+21. [Introducing Init Containers](#inroducing-init-containers)
 
 ---------------
 
@@ -1157,4 +1158,25 @@ There is an application that is hard-coded to write log output to a file o disk.
 
 [S05-L06 Creating Multi-Container Pods.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11388676/S05-L06.Creating.Multi-Container.Pods.pdf)
 
+
+Introducing Init Containers
+===
+Init containers are containers that run once during the startup process of a pod. A pod can have any number of init containers, and they will each run once (in order) to completion.
+
+![image](https://user-images.githubusercontent.com/113181949/236008629-2090f154-c654-435b-9a5f-da75c52e9a0d.png)
+
+
+### Init Containers
+
+You can use init containers to perfom a variety of startup tasks. They can contain and use software and setup scripts that are not needed by your main containers. They are often useful in keeping your main containers lighter and more secure by offloading startup tasks to a separate container.
+
+### Use Cases for Init Containers
+
+- Cause a pod to wait for another k8s resource to be created befor fiishing startup.
+- Perfomr sensitive startup setps securely outside of app contianers.
+- Populate data into a shared volume at startup.
+- Communicate with another service at startup.
+
+
+[S05-L06 Introducing Init Containers.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11389654/S05-L06.Introducing.Init.Containers.pdf)
 
