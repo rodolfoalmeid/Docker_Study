@@ -32,6 +32,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 17. [Managing Containers Resources](#managing-containers-resources)
 18. [Monitoring Container Health with Probes](#monitoring-container-health-with-probes)
 19. [Building Self-Healing Pods](#building-self-healing-pods)
+20. [Multi-Container Pod](#multi-container-pod)
 
 ---------------
 
@@ -1130,4 +1131,30 @@ The Never restart policy will cause the pod's containers to never be restarted, 
 ### Lesson Reference
 
 [1597437528004-devops-wb002 - S05-L05 Building Self-Healing Pods with Restart Policies.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11203458/1597437528004-devops-wb002.-.S05-L05.Building.Self-Healing.Pods.with.Restart.Policies.pdf)
+
+
+Multi-Container Pod
+===
+
+A k8s Pod can have one or more containers. A Pod with more than one container is a multi-container pod. In a multi-container pod, the containers share resources such as network and storage. They can interact with one another, working together to provide functionality.
+   > __Note__ 
+   > Best Practice: Keep containers in separate Pods unless they need to share resources.
+
+### Cross-Container Interaction
+
+Containers sharing the same Pod can interact with one another using shared resources.
+
+#### Example #01 - Network
+Containers share the same networking namespace and can communicate with one another on any port, even if that port is not exposed to the cluster.
+
+#### Example #02 - Storage
+Containers can use volumes to share data in a Pod.
+
+#### Example Use Case
+There is an application that is hard-coded to write log output to a file o disk. To solve this issue we can add a secondary container to the Pod (sometimes called a **sidecar**) that reads the log from a shared volume and prints it to the console so the log output will appear in the container log.
+
+![image](https://user-images.githubusercontent.com/113181949/236002907-57f56f55-d374-4d05-9f68-8131a252e995.png)
+
+[S05-L06 Creating Multi-Container Pods.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11388676/S05-L06.Creating.Multi-Container.Pods.pdf)
+
 
