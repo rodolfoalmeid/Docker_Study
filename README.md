@@ -1089,7 +1089,7 @@ Monitoring Container Health with Probes
 k8s provides a number of features that allow you to build robust solutions, such as the ability to automatically restart unhealthy containers. To make the most of these features, k8s needs to be able to accurately determine the status of your applications. This means actively monitoring container health.
 
 ## Liveness Probes
-Allow you to automatically determine wether or not a container application is in a healthy state. By default, k8s will only consider a container to be down if the container process stops. Liveness probes allow you rto customize this detection mechanism and make it more sphisticated.
+Allow you to automatically determine wether or not a container application is in a healthy state. By default, k8s will only consider a container to be down if the container process stops. Liveness probes allow you to customize this detection mechanism and make it more sphisticated.
 
 ![image](https://user-images.githubusercontent.com/113181949/230412110-4f02cf82-a046-4fd1-9047-bc0773649c99.png)
 
