@@ -33,7 +33,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 18. [Monitoring Container Health with Probes](#monitoring-container-health-with-probes)
 19. [Building Self-Healing Pods](#building-self-healing-pods)
 20. [Multi-Container Pod](#multi-container-pod)
-21. [Introducing Init Containers](#inroducing-init-containers)
+21. [Introducing Init Containers](#introducing-init-containers)
 
 ---------------
 
