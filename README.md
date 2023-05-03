@@ -34,6 +34,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 19. [Building Self-Healing Pods](#building-self-healing-pods)
 20. [Multi-Container Pod](#multi-container-pod)
 21. [Introducing Init Containers](#introducing-init-containers)
+22. [Exploring k8s Scheduling](exploring-k8s-scheduling)
 
 ---------------
 
@@ -1179,4 +1180,36 @@ You can use init containers to perfom a variety of startup tasks. They can conta
 
 
 [S05-L06 Introducing Init Containers.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11389654/S05-L06.Introducing.Init.Containers.pdf)
+
+Exploring k8s Scheduling
+===
+
+### Scheduling
+The process of assigning Pods to Nodes so kubelets can run them. 
+
+#### Scheduler
+Control plane component that handles scheduling.
+
+#### Scheduling Process
+The kubernetes scheduler selects a suitable Node for each Pod. It takes into account things like:
+- Resources requests vs. available node resources
+- Various configurations that affect scheduling using node lables.
+
+### Node Selector
+You can configure a nodeSelector for your Pods to limit which Node(s) the Pod can be scheduled on. Node selectors use node lables to filter suitable nodes.
+
+![image](https://user-images.githubusercontent.com/113181949/236030133-c924e097-8655-4213-a7a0-2634a622c1ca.png)
+
+It tells scheduler to only schedule that pod to nodes that only has that lable.
+
+
+### Node Name
+
+You can bypass scheduling and assign a Pod to a specific Node by name using nodeName.
+
+![image](https://user-images.githubusercontent.com/113181949/236030748-bfb42d2a-aef2-41c0-841c-d8e251314fff.png)
+
+[S06-L01 Exploring k8s Scheduling.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11390675/S06-L01.Exploring.k8s.Scheduling.pdf)
+
+
 
