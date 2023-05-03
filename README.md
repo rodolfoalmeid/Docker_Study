@@ -34,7 +34,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 19. [Building Self-Healing Pods](#building-self-healing-pods)
 20. [Multi-Container Pod](#multi-container-pod)
 21. [Introducing Init Containers](#introducing-init-containers)
-22. [Exploring k8s Scheduling](exploring-k8s-scheduling)
+22. [Exploring k8s Scheduling](#exploring-k8s-scheduling)
 
 ---------------
 
