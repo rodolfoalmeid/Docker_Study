@@ -35,6 +35,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 20. [Multi-Container Pod](#multi-container-pod)
 21. [Introducing Init Containers](#introducing-init-containers)
 22. [Exploring k8s Scheduling](#exploring-k8s-scheduling)
+23. [Using DaemonSets](#using-daemonsets)
 
 ---------------
 
@@ -1212,4 +1213,13 @@ You can bypass scheduling and assign a Pod to a specific Node by name using node
 [S06-L01 Exploring k8s Scheduling.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11390675/S06-L01.Exploring.k8s.Scheduling.pdf)
 
 
+Using DaemonSets
+===
 
+### What is DaemonSet?
+It automatically runs a copy of a Pod on each node. DaemonSets will run a copy of the Pod on new nodes as they are aded to the cluster.
+
+### DaemonSets and Scheduling
+DaemonSets respects normal scheduling rule around node labels, taints, and tolerations. If a pod would not normally be scheduled on a node, a DaemonSet will not create a copy of the Pod on that Node.
+
+[S06-L02 Using DaemonSets.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11398320/S06-L02.Using.DaemonSets.pdf)
