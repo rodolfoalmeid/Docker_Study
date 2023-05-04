@@ -37,6 +37,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 22. [Exploring k8s Scheduling](#exploring-k8s-scheduling)
 23. [Using DaemonSets](#using-daemonsets)
 24. [Using Static Pods](#using-static-pods)
+25. [k8s Deployment Overview](#k8s-deployment-overview)
 
 ---------------
 
@@ -1243,3 +1244,29 @@ This is the main path to store the YAML manifest files.
 Kubelet will create a mirror Pod for each static Pod. Mirror Pods allow you to see the status of the static Pod via k8s API, but you cannot change or manage them via the API.
 
 [S06-L03 Using Static Pods.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11398710/S06-L03.Using.Static.Pods.pdf)
+
+
+k8s Deployment Overview
+===
+
+### What is a Deployment
+A k8s object that defines a desired state for a ReplicaSet (a set of replica Pods). The Deployment Controller seeks to maintain the desired state by creating, deleting, and replacing Pods with new configurations.
+
+### Desired State
+##### Replicas
+The number of replica Pods the Deployment will seek to maintain.
+
+##### Selector
+A label selector used to identify the replica Pods managed by the Deployment.
+
+##### Template
+A template Pod definition used to create replica Pods.
+
+### Use Cases
+There are many use cases for Deployments, such as:
+- Easily scale an application up or down by changing the number of replicas.
+- Perform rolling updates to deploy a new software version.
+- Roll back to a previous software version.
+
+[S07-L01 K8s Deployments Overview.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11400613/S07-L01.K8s.Deployments.Overview.pdf)
+
