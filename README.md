@@ -38,6 +38,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 23. [Using DaemonSets](#using-daemonsets)
 24. [Using Static Pods](#using-static-pods)
 25. [k8s Deployment Overview](#k8s-deployment-overview)
+26. [Scaling Applications with Deployments](#scaling-applications-with-deployments)
 
 ---------------
 
@@ -1269,4 +1270,31 @@ There are many use cases for Deployments, such as:
 - Roll back to a previous software version.
 
 [S07-L01 K8s Deployments Overview.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11400613/S07-L01.K8s.Deployments.Overview.pdf)
+
+Scaling Applications with Deployments
+===
+
+### What is scaling?
+Scaling rfers to dedicating more (or fewer) resources to an application in order to meet changings needs. k8s Deployments are very useful in horizontal scaling, which involves changing the number of containers running an application.
+
+### Deployment Scaling
+The Deployment's replicas setting determines how many replicas are desired in its desired state. If the replicas number is changed, replica Pods will be created or deleted to satisfy the new number.
+
+### How to Scale a Deployment
+
+#### Edit YAML
+You can scale a deployment simply by chnaging the number of replicas in the YAML descriptor with ```kubectl apply``` or ```kubectl edit```.
+
+```
+spec:
+  replicas: 5
+```
+
+#### kubectl scale command
+Or use the special ```kubectl scale``` command.
+```
+kubectl scale --replicas=5 deployment.v1.apps/my-deployment 
+```
+
+[S07-L02 Scaling Applications With Deployments.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11400697/S07-L02.Scaling.Applications.With.Deployments.pdf)
 
