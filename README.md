@@ -39,6 +39,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 24. [Using Static Pods](#using-static-pods)
 25. [k8s Deployment Overview](#k8s-deployment-overview)
 26. [Scaling Applications with Deployments](#scaling-applications-with-deployments)
+27. [Managing Rolling Updates with Deployments](#managing-rolling-updates-with-deployments)
 
 ---------------
 
@@ -1298,3 +1299,39 @@ kubectl scale --replicas=5 deployment.v1.apps/my-deployment
 
 [S07-L02 Scaling Applications With Deployments.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11400697/S07-L02.Scaling.Applications.With.Deployments.pdf)
 
+
+Managing Rolling Updates with Deployments
+===
+
+### What is a Rolling Update?
+Rolling updates allow you to make changes to a deployment's Pods at a controlled rate, gradually replacing old Pods with new Pods. This allows you to update your Pods without icurring downtime.
+
+To start a rolling update you just need to edit the Deployment and after saving it, the kubernetes will automatically start the rolling update process and update the pods one by one.
+
+To check the status of the rolling update use the following command:
+```
+kubectl rollout status deployment.v1.apps/my-deployment
+```
+Another way to edit a deployment is usign the following command:
+```
+kubectl set image deployment/my-deployment nginx=nginx:broken --record
+```
+   > __Note__ 
+   > In the above command we set ```:broken``` to define a wrong version.
+   > the flag ```--record ``` is used to record the rollout steps.
+
+To check the rollout steps you can use the following command:
+```
+kubectl rollout history deployment.v1.apps/my-deployment
+```
+
+
+### What is a Rollback?
+If an update to a deployment causes a problem, you can roll back the deployment to a previous working state.
+
+To rollback a rolling update you can use the following command:
+```
+kubectl rollout undo deployment.v1.apps/my-deployment
+```
+
+[S07-L03 Managing Rolling Updates With Deployments.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11400949/S07-L03.Managing.Rolling.Updates.With.Deployments.pdf)
