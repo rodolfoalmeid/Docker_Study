@@ -36,6 +36,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 21. [Introducing Init Containers](#introducing-init-containers)
 22. [Exploring k8s Scheduling](#exploring-k8s-scheduling)
 23. [Using DaemonSets](#using-daemonsets)
+24. [Using Static Pods](#using-static-pods)
 
 ---------------
 
@@ -1223,3 +1224,15 @@ It automatically runs a copy of a Pod on each node. DaemonSets will run a copy o
 DaemonSets respects normal scheduling rule around node labels, taints, and tolerations. If a pod would not normally be scheduled on a node, a DaemonSet will not create a copy of the Pod on that Node.
 
 [S06-L02 Using DaemonSets.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11398320/S06-L02.Using.DaemonSets.pdf)
+
+
+Using static Pods
+===
+
+### What is a Static Pod
+A Pod that is managed directly by the kubelet on a node, not by the k8s API server. They can run even if there is no k8s API server present. Kubelet automatically creates static Pods from YAML manifest files located in the manifest path on the node.
+
+### Mirror Pods
+Kubelet will create a mirror Pod for each static Pod. Mirror Pods allow you to see the status of the static Pod via k8s API, but you cannot change or manage them via the API.
+
+[S06-L03 Using Static Pods.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11398710/S06-L03.Using.Static.Pods.pdf)
