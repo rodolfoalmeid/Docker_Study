@@ -1232,6 +1232,13 @@ Using static Pods
 ### What is a Static Pod
 A Pod that is managed directly by the kubelet on a node, not by the k8s API server. They can run even if there is no k8s API server present. Kubelet automatically creates static Pods from YAML manifest files located in the manifest path on the node.
 
+This is the main path to store the YAML manifest files.
+```
+/etc/kubernetes/manifests/
+```
+   > __Note__ 
+   > If you want to imediatly start the container, just restart the kubelet service  by issuing the command ```systemctl restart kubelet```
+
 ### Mirror Pods
 Kubelet will create a mirror Pod for each static Pod. Mirror Pods allow you to see the status of the static Pod via k8s API, but you cannot change or manage them via the API.
 
