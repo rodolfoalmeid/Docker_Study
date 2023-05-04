@@ -1331,7 +1331,10 @@ If an update to a deployment causes a problem, you can roll back the deployment 
 
 To rollback a rolling update you can use the following command:
 ```
-kubectl rollout undo deployment.v1.apps/my-deployment
+kubectl rollout undo deployment.v1.apps/my-deployment --to-revision=2
 ```
+
+   > __Note__ 
+   > You can use the flag ```--to-revision=2 ``` to rollback to a specific revision.
 
 [S07-L03 Managing Rolling Updates With Deployments.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11400949/S07-L03.Managing.Rolling.Updates.With.Deployments.pdf)
