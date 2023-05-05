@@ -43,6 +43,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 28. [k8s Networking Architectural Overview](#k8s-networking-architectural-overview)
 29. [CNI Plugins Overview](#cni-plugins-overview)
 30. [Understanding k8s DNS](#understanding-k8s-dns)
+31. [Using NetworkPolicies](#using-networkpolicies)
 
 ---------------
 
@@ -1391,3 +1392,47 @@ A Pod in the default namespace with the IP Address 192.168.10.100 would have a d
 ```
 
 [S08-L03 Understanding K8s DNS.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11409295/S08-L03.Understanding.K8s.DNS.pdf)
+
+
+Using NetworkPolicies
+===
+
+### What is a NetworkPolicy?
+A k8s **NetworkPolicy** is n object that allows you to control the flow of the network communication to and from Pods. This allows you to build a more secure cluster network by keeping Pods isolated from traffic they do not need.
+
+### Pod Selector
+**podSelector** determines to which Pods in the namespace the NetworkPolicy applies. The podSelector can select Pods using Pod lables.
+
+![image](https://user-images.githubusercontent.com/113181949/236550142-8854939b-79ba-40e5-ad77-0ad758ca8ce1.png)
+
+
+   > __Note__ 
+   > By default, Pods are considered non-isolated and completely open to all communication.
+   > If any NetworkPolicy selects a Pod, the Pod is considered isolated ad will only be open to trafic allowed by NetworkPolicies.
+
+
+### Ingress and Egress
+A NetworkPolicy can apply to Ingress, Egress or both.
+
+![image](https://user-images.githubusercontent.com/113181949/236550251-67afbccf-7388-414d-98b8-4e9acec16305.png)
+
+
+### from and to Slectors
+
+**from selector**: Selects ingress (incoming) traffic that will be allowed.
+
+**to selector**: Selects egress (outgoing) traffic that will be allowed.
+
+![image](https://user-images.githubusercontent.com/113181949/236550519-a9b1c9b1-a583-43b8-921f-3b082f897e76.png)
+
+![image](https://user-images.githubusercontent.com/113181949/236550630-a45a21df-d1f5-4185-aba0-ff4410d601a6.png)
+
+
+### Ports
+**port**: Specifies one or more ports that will allow traffic. Traffic is only allowed i it matchs both an allowed port and one of the from/to rules.
+
+![image](https://user-images.githubusercontent.com/113181949/236550773-c60dd442-ee92-4e27-9c91-4b3c946e0b8d.png)
+
+
+[S08-L04 Using NetworkPolicies.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11409474/S08-L04.Using.NetworkPolicies.pdf)
+
