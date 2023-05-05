@@ -40,6 +40,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 25. [k8s Deployment Overview](#k8s-deployment-overview)
 26. [Scaling Applications with Deployments](#scaling-applications-with-deployments)
 27. [Managing Rolling Updates with Deployments](#managing-rolling-updates-with-deployments)
+28. [k8s Networking Architectural Overview](#k8s-networking-architectural-overview)
 
 ---------------
 
@@ -1338,3 +1339,14 @@ kubectl rollout undo deployment.v1.apps/my-deployment --to-revision=2
    > You can use the flag ```--to-revision=2 ``` to rollback to a specific revision.
 
 [S07-L03 Managing Rolling Updates With Deployments.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11400949/S07-L03.Managing.Rolling.Updates.With.Deployments.pdf)
+
+k8s Networking Architectural Overview
+===
+
+### k8s Network Model
+The k8s network model is a set of standards that define how networking between Pods behaves. There are a variety of different implementations of this model - including the **Calico network plugin**, which we have been using throughout this course.
+
+### Network Model Architecture
+The k8s network model defines how Pos communicate with each other, regardless of which Node they are running on. Each Pod has its own **unique IP address** within the cluster. Any Pod can reach any other Pod using that Pod's IP address. This creates a virtual network that allows Pods to easily communicate with each other, regardless of which node they are on.
+
+![image](https://user-images.githubusercontent.com/113181949/236538041-9cd2b3b5-9376-434c-a32b-96a41516cee3.png)
