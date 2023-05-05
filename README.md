@@ -41,6 +41,8 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 26. [Scaling Applications with Deployments](#scaling-applications-with-deployments)
 27. [Managing Rolling Updates with Deployments](#managing-rolling-updates-with-deployments)
 28. [k8s Networking Architectural Overview](#k8s-networking-architectural-overview)
+29. [CNI Plugins Overview](#cni-plugins-overview)
+30. [Understanding k8s DNS](#understanding-k8s-dns)
 
 ---------------
 
@@ -1350,3 +1352,42 @@ The k8s network model is a set of standards that define how networking between P
 The k8s network model defines how Pos communicate with each other, regardless of which Node they are running on. Each Pod has its own **unique IP address** within the cluster. Any Pod can reach any other Pod using that Pod's IP address. This creates a virtual network that allows Pods to easily communicate with each other, regardless of which node they are on.
 
 ![image](https://user-images.githubusercontent.com/113181949/236538041-9cd2b3b5-9376-434c-a32b-96a41516cee3.png)
+
+
+CNI Plugins Overview
+===
+
+### CNI Plugins
+CNI Plugins are a type of kubernetes network plugin. These plugins provide network conectivity between Pods according to the standard set by the kubernetes network model. 
+
+### Selecting a Network Plugin
+Which network plugin is best for you will depend on your specifc situation. Check the kubernetes documentation for  list of available plugins. You may need to research some of these plugins for yourself, depending on your production use case.
+
+### Installing Network Plugins
+Each plugin has its own unique installation process.
+
+   > __Note__ 
+   > Kubernetes nodes will remain NotReady until a network plugin is installed. You will b unable to run Pods while this is the case.
+
+
+
+Understanding k8s DNS
+===
+
+### DNS in k8s
+The k8s virtual network uses a DNS (Domain Name System) to allow Pods to locate other Pods and Services using domain names instead of IP addresses. This DNS runs as a Service within the cluster. You can usually find it in the **kube-system** namespace.
+Kubeadm clusters use **CoreDNS**.
+
+
+### Pod Domain Names
+All Pods in our kubeadm cluster are automatically given a domain name of the following form:
+```
+pod-ip-address.namespace-name.pod.cluster.local
+```
+
+A Pod in the default namespace with the IP Address 192.168.10.100 would have a domain name like this.
+```
+192-168-10-100.default.pod.cluster.local
+```
+
+[S08-L03 Understanding K8s DNS.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11409295/S08-L03.Understanding.K8s.DNS.pdf)
