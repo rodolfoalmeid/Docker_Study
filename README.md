@@ -1183,9 +1183,43 @@ You can use init containers to perfom a variety of startup tasks. They can conta
 ### Use Cases for Init Containers
 
 - Cause a pod to wait for another k8s resource to be created befor fiishing startup.
-- Perfomr sensitive startup setps securely outside of app contianers.
+- Perform sensitive startup setps securely outside of app contianers.
 - Populate data into a shared volume at startup.
 - Communicate with another service at startup.
+
+### About Init Containers
+- They have a different type called ``` initContainers ```
+- They will run first during the deployment or daemonset initialization.
+- will run in the order listed in the YAML file.
+- Each init container need to complete (exit) successfully. If failed the pod will not start depending on the startup policy.
+
+```
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: content
+spec:
+  schedule: "*/60 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          initContainers:
+            - name: content
+              image: alpine
+              command:
+                - "/bin/sh"
+                - "-c"
+                - "rm -rf /tmp/* || true"
+              volumeMounts:
+                - name: tmp
+                  mountPath: /tmp/
+          containers:
+            - name: content
+              image: alpine
+              command:
+                - /scripts/content-download.sh
+```
 
 
 [S05-L06 Introducing Init Containers.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11389654/S05-L06.Introducing.Init.Containers.pdf)
