@@ -45,6 +45,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 30. [Understanding k8s DNS](#understanding-k8s-dns)
 31. [Using NetworkPolicies](#using-networkpolicies)
 32. [k8s Service Overview](#k8s-service-overview)
+33. [Using k8s Services](#using-k8s-services)
 
 ---------------
 
@@ -1475,9 +1476,11 @@ A NetworkPolicy can apply to Ingress, Egress or both.
 k8s Service Overview
 ===
 
+
 ### What is a service?
 Kubernetes Services provide a way to expose an application running as a set of Pods.
 They provide an abstract way for clients to access applications without needing to be aware of the application Pods.
+
 
 ### Service Routing
 Clients make requests to a Service, which routes traffic to its pods in a load-balanced fashion.
@@ -1489,3 +1492,9 @@ Endpoints are the backend entities to which Services route traffic. For a Servic
 
    > __Note__ 
    > One way to determine which Pod(s) a Service is routing traffic to is to look at the services Endpoints.
+
+
+Using k8s Services
+===
+
+### Service Types
