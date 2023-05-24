@@ -1498,3 +1498,30 @@ Using k8s Services
 ===
 
 ### Service Types
+Each Service has a type. The Service type determines how and where the Service will expose your application. There are four service types:
+
+- ClusterIP
+- NodePort
+- LoadBalancer
+- ExternalName (outside the scope of CKA)
+
+
+### Cluster IP Services
+Services expose applications inside the cluster network. Use them when your clients will be other Pods within the cluster.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/9a44ab3d-a1af-4254-9836-b180bfbf3fc2)
+
+
+### NodePort Services
+NodePort Services expose applications outside the cluster network. Use NodePort when applications or users will be accessing yout application from outside the cluster.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/b677b082-dea0-42e4-842b-65e3bf2bedd8)
+
+
+### LoadBalancer Services
+LoadBalancer Services also expose applications outside the cluster network, but they use an external cloud load balancer to do so. This service type only works with cloud platforms that include load balancing functionality.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/f95be9de-5d9a-491a-8650-cc286e6b9dc1)
+
+[S09-L02 Using K8s Services.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11557149/S09-L02.Using.K8s.Services.pdf)
+
