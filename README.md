@@ -46,6 +46,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 31. [Using NetworkPolicies](#using-networkpolicies)
 32. [k8s Service Overview](#k8s-service-overview)
 33. [Using k8s Services](#using-k8s-services)
+34. [Discovering k8s Services with DNS](#discovering-k8s-services-with-dns)
 
 ---------------
 
@@ -1525,3 +1526,14 @@ LoadBalancer Services also expose applications outside the cluster network, but 
 
 [S09-L02 Using K8s Services.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11557149/S09-L02.Using.K8s.Services.pdf)
 
+
+Discovering k8s Services with DNS
+===
+
+### Service DNS Names
+The Kubernetes DBS (Domain Name System) assigns DNS names to Services, allowing applications within the cluster to easily locate them.
+A services fully qualified domain name has the following format:
+``` service-name.namespace-name.svc.cluster-domain.example```
+The default cluster domain is ```cluster.local```.
+
+### Service DNS and Namespaces
