@@ -1531,9 +1531,13 @@ Discovering k8s Services with DNS
 ===
 
 ### Service DNS Names
+
 The Kubernetes DBS (Domain Name System) assigns DNS names to Services, allowing applications within the cluster to easily locate them.
+
 A services fully qualified domain name has the following format:
+
 ``` service-name.namespace-name.svc.cluster-domain.example```
+
 The default cluster domain is ```cluster.local```.
 
 ### Service DNS and Namespaces
