@@ -1541,3 +1541,10 @@ A services fully qualified domain name has the following format:
 The default cluster domain is ```cluster.local```.
 
 ### Service DNS and Namespaces
+
+A Services fully qualified domain name can be used to reach the service from within any Namespace in the cluster.
+
+However, Pods withinthe same Namespace can also simply use the service name.
+
+[S09-L03 Discovering K8s Services With DNS.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11558188/S09-L03.Discovering.K8s.Services.With.DNS.pdf)
+
