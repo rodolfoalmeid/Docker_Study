@@ -47,6 +47,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 32. [k8s Service Overview](#k8s-service-overview)
 33. [Using k8s Services](#using-k8s-services)
 34. [Discovering k8s Services with DNS](#discovering-k8s-services-with-dns)
+35. [Managing Access from Outside with k8s Ingress](#managing-access-from-outside-with-k8s-ingress)
 
 ---------------
 
@@ -1548,3 +1549,31 @@ However, Pods withinthe same Namespace can also simply use the service name.
 
 [S09-L03 Discovering K8s Services With DNS.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11558188/S09-L03.Discovering.K8s.Services.With.DNS.pdf)
 
+
+Managing Access from Outside with k8s Ingress
+===
+
+### What is an Ingress?
+An Ingress is a kubernetes object that manages external access to Services in the cluster. An Ingress is capable of providing more functionality than a simple NodePort Service, such as SSL termination, advanced load balancing, or name-based virtual hosting.
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/7c0b331b-c568-45ef-87ee-a2ecdf9b8c0a)
+
+
+### Ingress Controllers
+Ingress objects actually do nothing by themselves. Inorder for Ingresses to do anything, you must install one or more Ingress Controllers. There are a variety of Ingress Controllers available - all of which implement different methds for providing external access to your Services.
+
+
+### Routing to a Service
+Ingress define a set of routing rules. A routing rules properties determine to which requests it applies. Each rule has a set of paths, each with a backend. requests matching a path will be routed to its associated backend. 
+
+In this example a request to ***https://<some-endpoint./somepath*** would be routed to port 80 on the my-service Service.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/97517aa2-1136-43b9-a2c8-bcec6a405978)
+
+
+### Routing to a Service with NamedPort
+If a Service uses a named port, an Ingress can also use the ports name to choose to which port it will route.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/3c816cbb-3790-49a5-b7c4-248612dcff4d)
+
+
+[S09-L04 Managing Access from Outside with K8s Ingress.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11575857/S09-L04.Managing.Access.from.Outside.with.K8s.Ingress.pdf)
