@@ -48,6 +48,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 33. [Using k8s Services](#using-k8s-services)
 34. [Discovering k8s Services with DNS](#discovering-k8s-services-with-dns)
 35. [Managing Access from Outside with k8s Ingress](#managing-access-from-outside-with-k8s-ingress)
+36. [k8s Storage Overview](#k8s-storage-overview)
 
 ---------------
 
@@ -1577,3 +1578,42 @@ If a Service uses a named port, an Ingress can also use the ports name to choose
 
 
 [S09-L04 Managing Access from Outside with K8s Ingress.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11575857/S09-L04.Managing.Access.from.Outside.with.K8s.Ingress.pdf)
+
+
+k8s Storage Overview
+===
+
+### Container File System
+The conainer file system is ephemeral. Files on the containers file system exist only as long as the container exists.
+If a container is delete or re-created in k8s, data stored on the container file system is lost.
+
+### Volumes
+Many applications need a more persistent method of data storage.
+**Volumes** allow you to store data outside the container file system while allowing the container to access the data at runtime.
+This can allow data to persist beyond the life of the container.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/5bc2235f-6671-421b-b271-757a0e3ecf9b)
+
+
+
+### Persistent Volumes
+Volumer offer a simple way to provide external storage to containers within the Pod/container spec.
+**Persistent volumes** are slightly more advanced form of Volume. They allow you to treat storage as an abstract resource and consume it using your Pods.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/a3086ec4-acfd-4920-9ff9-7f46f685566b)
+
+
+### Volume Types
+Both Volumes and Persistent Volumes each have a **volume type**. The volume type determines how the storage is actually handled.
+
+Various volume types support storge methods such as:
+
+- NFS
+- Cloud storage mechanisms (AWS, Azure, GCP)
+- ConfigMaps and Secrets
+- A simple directory on the k8s node
+
+
+
+
+
