@@ -49,6 +49,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 34. [Discovering k8s Services with DNS](#discovering-k8s-services-with-dns)
 35. [Managing Access from Outside with k8s Ingress](#managing-access-from-outside-with-k8s-ingress)
 36. [k8s Storage Overview](#k8s-storage-overview)
+37. [Using k8s Volumes](#using-k8s-volumes)
 
 ---------------
 
@@ -1614,6 +1615,35 @@ Various volume types support storge methods such as:
 - A simple directory on the k8s node
 
 
+Using k8s Volumes
+===
+
+### Volumes and volumeMounts
+Regular volumes can be set up relatively easily within a Pod/container specification.
+
+**volumes:** In the Pod spec, these specify the storage volumes available to the Pod. They specify the volume type and other data that determines where and how the data is actually stored. You can have any number of volumes in your pod.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/4b983c42-b442-48f8-8980-14039a64b415)
+
+**volumeMounts:** In the container spec, these reference the volumes in the Pod spec and provide a mountPath (the locations on the file system where the container process will access the volume data).
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/7d51980f-76fa-443f-90eb-b12ee2d06870)
+
+
+### Sharing Volumes between Containers
+You can use volumeMounts to mount the same volume to multiple containers within the same Pod.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/c1e7c110-b57b-4bff-bcf0-5836e537f618)
+
+
+### Common Volume Types
+There are many volume types, but there are two you may want to be especially aware of.
+
+**hostPath:** Stores data in a specified directory on the k8s node.
+
+**emptyDir:** Stores data in a dynamically created locations on the node. This directory exists only as long as the Pod exists on the node. the directory and the data are deleted when the Pod is removed. This volume type is very useful for simply sharing data between containers in the same Pod.
+
+[S10-L02 Using K8s Volumes.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11578788/S10-L02.Using.K8s.Volumes.pdf)
 
 
 
