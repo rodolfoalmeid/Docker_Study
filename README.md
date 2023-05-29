@@ -51,6 +51,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 36. [k8s Storage Overview](#k8s-storage-overview)
 37. [Using k8s Volumes](#using-k8s-volumes)
 38. [Exploring k8s Persistent Volumes](#exploring-k8s-persistent-volumes)
+39. [Troubleshooting your k8s Cluster](#troubleshooting-your-k8s-cluster)
 
 ---------------
 
@@ -1714,3 +1715,40 @@ However, the StorageClass must support resizing volumes and must have **allowVol
 
 
 [S10-L04 Using K8s Persistent Volumes.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11593710/S10-L04.Using.K8s.Persistent.Volumes.pdf)
+
+
+Troubleshooting your k8s Cluster
+===
+
+### Kube API Server
+If the k8s API server is down, you will not be able to use kubectl to interact with the cluster. You may get a message that looks something like:
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/5fa1d6f5-054b-4f65-b872-a6ee8e35c2cd)
+Assuming your kubeconfig is set up correctly, this may mean the API server is down.
+
+**Possible Fixes:**
+Make sure the docker and kubelet services are up and running on your control plane node(s).
+
+### Checking Node Status
+Check the status of your nodes to see if any of them are experiencing issues.
+
+Use ```kubectl get nodes``` to see the overall status of each node.
+
+Use ```kubectl describe nodes``` to get more information on any nodes that are not in the READY state.
+
+
+### Checking k8s Services
+If a node is having problems, it may be because a service is down on that node. Each node runs the kubelet and container runtime (i.e. Docker) services.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/83c99d90-3a48-437d-a0b2-41048790830f)
+
+
+
+### Checking System Pods
+In a kubeadm cluster, several k8s components run as pods in the kube-system namespaces. Check the status of these components with kubectl get pods and kubectl describe pod.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/4f423fc0-7b7c-4854-977c-14a7c5ee13e6)
+
+
+
+[S11-L02 Troubleshooting Your K8s Cluster.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11593910/S11-L02.Troubleshooting.Your.K8s.Cluster.pdf)
+
