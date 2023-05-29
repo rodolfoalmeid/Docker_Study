@@ -1737,15 +1737,13 @@ Use ```kubectl get nodes``` to see the overall status of each node.
 
 Use ```kubectl describe nodes``` to get more information on any nodes that are not in the READY state.
 
-![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/640ed7fa-84ee-4489-a1d4-a4ff6e218f4e)
-
 
 ### Checking k8s Services
 If a node is having problems, it may be because a service is down on that node. Each node runs the kubelet and container runtime (i.e. Docker) services.
 
 ![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/83c99d90-3a48-437d-a0b2-41048790830f)
 
-
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/640ed7fa-84ee-4489-a1d4-a4ff6e218f4e)
 
 ### Checking System Pods
 In a kubeadm cluster, several k8s components run as pods in the kube-system namespaces. Check the status of these components with kubectl get pods and kubectl describe pod.
