@@ -1722,6 +1722,7 @@ Troubleshooting your k8s Cluster
 
 ### Kube API Server
 If the k8s API server is down, you will not be able to use kubectl to interact with the cluster. You may get a message that looks something like:
+
 ![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/5fa1d6f5-054b-4f65-b872-a6ee8e35c2cd)
 
 Assuming your kubeconfig is set up correctly, this may mean the API server is down.
