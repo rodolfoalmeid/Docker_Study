@@ -50,6 +50,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 35. [Managing Access from Outside with k8s Ingress](#managing-access-from-outside-with-k8s-ingress)
 36. [k8s Storage Overview](#k8s-storage-overview)
 37. [Using k8s Volumes](#using-k8s-volumes)
+38. [Exploring k8s Persistent Volumes](#exploring-k8s-persistent-volumes)
 
 ---------------
 
@@ -1647,3 +1648,66 @@ There are many volume types, but there are two you may want to be especially awa
 
 
 
+Exploring k8s Persistent Volumes
+===
+
+### PersistentVolumes
+PersistentVolumes are k8s objects that allow you to treat storage as an abstract resource to be consumed by Pods, much like k8s treats compute resources such as memory and CPU.
+
+A Persistentvolume uses a set of attributes to describe the underlying storage resource (such as a disk or cloud storage location) which will be used to store data.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/38587510-935e-4533-bb19-f2d329f8617a)
+
+
+### Storage Classes
+
+Storae Classes allow k8s administrators to specify the types of storage services they offer on their platform.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/19fa9cf6-72e8-499a-8b85-1137965a6c28)
+
+For example, an administrator could create a StorageClass called slow to describe low-performance but inexpensive storage resources, and another called fast for high-performance but more costly resources. This would allow users to choose storage resources that fit the needs of their applications.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/dbf044b8-9b90-407f-9373-958c6eace659)
+
+
+### allowVolumeExpansion
+The allowVolumeExpansion property of a StorageClass determines whether or not the StorageClass supports the ability to resize volumes after they are created. If this property is not set to true, attempting to resize a volume that uses this StorageClass will result in an error.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/6e2e8728-a17f-435e-a5b8-0f48fdc13a9e)
+
+
+### reclaimPolicies
+A persistentVolumeReclaimPolicy determines how the storage resources can be used when the PersistentVolumes associated PersistentVolumeClaims are deteled.
+
+#### Retain:
+Keeps all data. This requires an administrator to manually clean up the data and prepare the storage resource for reuse.
+
+#### Delete:
+Deletes the underlying storage resource automatically (anly works for cloud storage resources).
+
+#### Recycle:
+Automatically deletes all data in the underlying storage resource, allowing the PersistentVolume to be reused.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/1b31a927-d6ce-4268-a9c6-e07f3aa700f8)
+
+
+### PersistentVolumeClaims
+A PersistentVolumeClaim represents a users request for a storage resources. It defines a set of attributes similar to those of a PersistentVolume (StorageClass, etc.)
+
+When a PersistentVolumeClaim is created, it will look for a PersistentVolume that is able to meet the requested criteria. If it finds one, it will automatically be bound to the PersistentVolume.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/dab94f2f-f481-4b6d-a5e9-fb07ee54dabe)
+
+
+### Using a PersistentVolumeClain in a Pod
+PersistentVolumeClaims can be mounted to a Pods containers just like any other volume. If the PersistentVolumeClaim is bound to a PersistentVolume, the containers will use the underlying PersistentVolume storage.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/b757769b-b609-4140-9943-743310b15c89)
+
+
+### Resizing a PersistentVolumeClaim
+You can exand PersistentVolumeClaims without interrupting applications that are using them. Simply edit the **spec.resources.requests.storage** attribute of an existing PersistentVolumeClaim, increasing its value.
+
+However, the StorageClass must support resizing volumes and must have **allowVolumeExpansion** set to true.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/af18be1f-8f41-4e27-a16f-3f02d5719c13)
