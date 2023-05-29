@@ -1711,3 +1711,6 @@ You can exand PersistentVolumeClaims without interrupting applications that are 
 However, the StorageClass must support resizing volumes and must have **allowVolumeExpansion** set to true.
 
 ![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/af18be1f-8f41-4e27-a16f-3f02d5719c13)
+
+
+[S10-L04 Using K8s Persistent Volumes.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11593710/S10-L04.Using.K8s.Persistent.Volumes.pdf)
