@@ -53,6 +53,8 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 38. [Exploring k8s Persistent Volumes](#exploring-k8s-persistent-volumes)
 39. [Troubleshooting your k8s Cluster](#troubleshooting-your-k8s-cluster)
 40. [Checking Cluster and Node Logs](#checking-cluster-and-node-logs)
+41. [Troubleshooting your application](#troubleshooting-your-application)
+42. [Checking  Container Logs](#checking-container-logs)
 
 ---------------
 
@@ -1776,4 +1778,54 @@ The Kubernetes cluster componeents have log output redirected to ```/var/log```.
  
  
 [S11-L03 Checking Cluster and Node Logs.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11599525/S11-L03.Checking.Cluster.and.Node.Logs.pdf)
+
+
+Troubleshooting your application
+===
+
+### Checking Pod Status
+You can see a Pods status with ```kubectl get pods```.
+
+```
+kubectl get pods
+```
+
+Use ```kubectl describe pod```, to get more infomation about what may be going on with an unhealthy Pod.
+
+```
+kubectl describe pod <podname>
+```
+
+### Running Commands Inside Containers
+If you need to troubleshoot what is going on inside a container, you can execute commands with the container with ```kubectl exec```.
+
+```
+kubectl exec <podname> -c <containername> -- command
+```
+
+   > __Note__ 
+   > You cannot use kubectl exec to run any software that is not present within the container.
+ 
+
+[S11-L04 Troubleshooting Your Applications.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11600520/S11-L04.Troubleshooting.Your.Applications.pdf)
+
+
+Checking  Container Logs
+===
+
+
+### Container Logging
+k8s containers maintain logs, which you can use to gain insight into what is going on within the container.
+
+A containers log contains everything written to the standard output (stdout) and error (stderr) streams be the container process.
+
+
+### kubectl logs
+Use kubectl logs command to view a containers logs.
+
+```
+kubectl logs <podname> -c <containername>
+```
+
+[S11-L05 Checking Container Logs.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11600594/S11-L05.Checking.Container.Logs.pdf)
 
