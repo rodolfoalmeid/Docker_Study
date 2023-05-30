@@ -55,6 +55,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 40. [Checking Cluster and Node Logs](#checking-cluster-and-node-logs)
 41. [Troubleshooting your application](#troubleshooting-your-application)
 42. [Checking  Container Logs](#checking-container-logs)
+43. [Troubleshooting k8s Networking Issues](#troublshooting-k8s-networking-issues)
 
 ---------------
 
@@ -1829,3 +1830,20 @@ kubectl logs <podname> -c <containername>
 
 [S11-L05 Checking Container Logs.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11600594/S11-L05.Checking.Container.Logs.pdf)
 
+Troubleshooting k8s Networking Issues
+===
+
+### kube-proxy and DNS
+In addition to checking on your k8s networking plugin, it may be a good idea to look at kube-proxy and the k8s DNS if you are experiêncing issues within the k8s cluster network.
+
+In a kubeadm cluster, the k8s DNS and kue-proxy run as Pods in the kube-system namespace.
+
+### netshoot
+**TIP:** You can run a container in the cluster that you can use to run commands to test and gather information about network functionality.
+
+The **nikolaka/netshoot** image is a great tool for this. This image contains a variety of networking exporation and troubleshooting tools.
+
+Create a container running this image, and thn use ```kubectl exec```to explore away!
+
+
+[S11-L06 Troubleshooting K8s Networking Issues.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11602532/S11-L06.Troubleshooting.K8s.Networking.Issues.pdf)
