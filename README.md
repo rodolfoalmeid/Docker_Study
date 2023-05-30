@@ -52,6 +52,7 @@ This repository will be used to post all topics related to Kubernetes CKA certif
 37. [Using k8s Volumes](#using-k8s-volumes)
 38. [Exploring k8s Persistent Volumes](#exploring-k8s-persistent-volumes)
 39. [Troubleshooting your k8s Cluster](#troubleshooting-your-k8s-cluster)
+40. [Checking Cluster and Node Logs](#checking-cluster-and-node-logs)
 
 ---------------
 
@@ -1753,4 +1754,26 @@ In a kubeadm cluster, several k8s components run as pods in the kube-system name
 
 
 [S11-L02 Troubleshooting Your K8s Cluster.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11593910/S11-L02.Troubleshooting.Your.K8s.Cluster.pdf)
+
+
+Checking Cluster and Node Logs
+===
+
+### Service Logs
+You can check the logs for k8s-related services on each node using journalctl.
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/3a1a717c-5db6-4e61-a4cc-fd1b9ee8e8c1)
+
+
+
+### Cluster Component Logs
+The Kubernetes cluster componeents have log output redirected to ```/var/log```. For example:
+
+![image](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/assets/113181949/31576587-3b93-4c25-990d-6ced0948a045)
+
+   > __Note__ 
+   > These log files may not appear for kubeadm clusters, since some componenets run inside containers. In that case, you can access them with kubectl logs.
+ 
+ 
+[S11-L03 Checking Cluster and Node Logs.pdf](https://github.com/rodolfoalmeid/Kubernetes-CKA-Study/files/11599525/S11-L03.Checking.Cluster.and.Node.Logs.pdf)
 
