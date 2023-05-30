@@ -322,6 +322,9 @@ kubectl get pods --all-namespaces
 > __Note__ 
 > If you do not specify a namespace, the default namespace is assumed.
 
+> __Note__ 
+> In Kubernetes, namespace provides a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces. Namespace-based scoping is applicable only for namespaced objects (e.g. Deployments, Services, etc) and not for cluster-wide objects (e.g. StorageClass, Nodes, PersistentVolumes, etc).
+
 
 ## Create a Namespace
 
