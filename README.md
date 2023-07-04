@@ -1860,26 +1860,25 @@ LABS
 
 ### Certified Kubernetes Administrator (CKA) - Practice Exam Part 3
 
-Introduction
+#### Introduction
 This lab provides practice scenarios to help prepare you for the Certified Kubernetes Administrator (CKA) exam. You will be presented with tasks to complete as well as server(s) and/or an existing Kubernetes cluster to complete them in. You will need to use your knowledge of Kubernetes to successfully complete the provided tasks, much like you would on the real CKA exam. Good luck!
 
-Solution
-Log in to the server using the credentials provided:
+#### Solution
 
-ssh cloud_user@<PUBLIC_IP_ADDRESS>
-Create a Service Account
-Switch to the appropriate context with kubectl:
+#### Create a Service Account
 
-kubectl config use-context acgk8s
 Create a service account:
 
-kubectl create sa webautomation -n web
-Create a ClusterRole That Provides Read Access to Pods
-Create a pod-reader.yml file:
+``` kubectl create sa webautomation -n web ```
 
-vi pod-reader.yml
+Create a ClusterRole That Provides Read Access to Pods
+Create a ```pod-reader.yml``` file:
+
+```vi pod-reader.yml```
+
 Define the ClusterRole:
 
+```
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -1888,17 +1887,20 @@ rules:
 - apiGroups: [""]
   resources: ["pods"]
   verbs: ["get", "watch", "list"]
-Press Esc and enter:wq to save and exit.
+```
 
-Creat the ClusterRole:
+Create the ClusterRole:
 
-kubectl create -f pod-reader.yml
+```kubectl create -f pod-reader.yml```
+
 Bind the ClusterRole to the Service Account to Only Read Pods in the web Namespace
 Create the rb-pod-reader.yml file:
 
-vi rb-pod-reader.yml
+```vi rb-pod-reader.yml```
+
 Define the RoleBinding:
 
+```
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -1911,11 +1913,13 @@ roleRef:
   kind: ClusterRole
   name: pod-reader
   apiGroup: rbac.authorization.k8s.io
-Press Esc and enter:wq to save and exit.
+```
+
 
 Create the RoleBinding:
 
-kubectl create -f rb-pod-reader.yml
+```kubectl create -f rb-pod-reader.yml```
+
 Verify the RoleBinding works:
 
-kubectl get pods -n web --as=system:serviceaccount:web:webautomation
+```kubectl get pods -n web --as=system:serviceaccount:web:webautomation```
